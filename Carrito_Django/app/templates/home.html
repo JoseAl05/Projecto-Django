@@ -1,0 +1,35 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Proyecto Django</title>
+
+    {% include 'headers.html' %}
+  </head>
+  <body class="hold-transition sidebar-mini layout-fixed">
+    <!-- Site wrapper -->
+    <div class="wrapper">
+      <!-- Navbar -->
+      {% include 'header.html' %}
+
+      <!-- Main Sidebar Container -->
+      {% include 'sidebar.html' %}
+
+      <div class="content-wrapper">
+        <section class="content-header"></section>
+
+        <section class="content">
+          {% block content %} {% endblock content %}
+        </section>
+      </div>
+
+      {% include 'footer.html' %}
+
+      <aside class="control-sidebar control-sidebar-dark"></aside>
+    </div>
+
+    {% include 'scripts.html' %}
+  </body>
+</html>

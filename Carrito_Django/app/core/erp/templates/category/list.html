@@ -1,0 +1,21 @@
+{% extends 'list.html' %}
+
+{% block columns %}
+<tr>
+    <th>ID</th>
+    <th>Nombre</th>
+    <th>Acción</th>
+</tr>
+{% endblock columns %}
+{% block rows %}
+    {% for c in categories %}
+    <tr>
+        <td scope="row">{{c.id}}</td>
+        <td>{{c.name}}</td>
+        <td>
+            <button type="button" class="btn btn-danger"><i class="fas fa-trash"></i></button>
+            <button type="button" class="btn btn-warning"><i class="fas fa-edit"></i></button>
+        </td>
+    </tr>
+    {% endfor %}
+{% endblock rows %}
