@@ -23,20 +23,37 @@
     </table>
   </div>
   <div class="card-footer">
-    <button type="button" class="btn btn-primary btn-flat"><i class="fas fa-plus"></i>New Category</button>
+    <button type="button" class="btn btn-primary btn-flat" id="btnTest"><i class="fas fa-plus"></i>New Category</button>
   </div>
 </div>
 {% endblock %}
 
 {% block javascript %}
   <script type="application/javascript">
-    $(document).ready(function () {
+    $(function(){
         $('#categories').DataTable({
           responsive:true,
           autoWidth:false,
           'language': {
             url:'{% static 'lib/datatables-1.11.2/spanish.txt' %}'
           }
+        });
+
+        $('#btnTest').on('click',function(){
+          $.ajax({
+            url: '{% url 'category_list' %}',
+            type:'POST',
+            data:{
+              id:1
+            },
+            dataType:'json'
+          }).done(function(data){
+            console.log(data)
+          }).fail(function(jqXHR,textStatus,errorThrown){
+            alert(textStatus+':'+errorThrown);
+          }).always(function(data){
+            alert('complete');
+          });
         });
     });
   </script>
