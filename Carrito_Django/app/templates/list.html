@@ -1,27 +1,44 @@
 {% extends 'home.html' %}
+{% load static %}
 {% block content %}
-            <div class="card card-default">
-              <div class="card-header">
-                <h3 class="card-title">
-                  <i class="fas fa-search"></i>
-                  {{ title }}
-                </h3>
-              </div>
-              <!-- /.card-header -->
-              <div class="card-body">
-                <table class="table">
-                    <thead>
-                    {% block columns %}{% endblock columns %}
+<div class="card card-default">
+  <div class="card-header">
+    <h3 class="card-title">
+      <i class="fas fa-search"></i>
+        {{ title }}
+    </h3>
+  </div>
+  <div class="card-body">
+    <table class="table" id="categories">
+      <thead>
+      {% block columns %}
 
-                    {% block rows %}{% endblock rows %}
-                    </tbody>
-                </table>
-              </div>
-                <div class="card-footer">
-                    <button type="button" class="btn btn-primary btn-flat"><i class="fas fa-plus"></i>Nuevo Registro</button>
-                </div>
-            </div>
-            <!-- /.card -->
-          </div>
-          <!-- /.col -->
-{% endblock content %}
+      {% endblock %}
+      </thead>
+      <tbody>
+      {% block rows %}
+
+      {% endblock %}
+      </tbody>
+    </table>
+  </div>
+  <div class="card-footer">
+    <button type="button" class="btn btn-primary btn-flat"><i class="fas fa-plus"></i>New Category</button>
+  </div>
+</div>
+{% endblock %}
+
+{% block javascript %}
+  <script type="application/javascript">
+    $(document).ready(function () {
+        $('#categories').DataTable({
+          responsive:true,
+          autoWidth:false,
+          'language': {
+            url:'{% static 'lib/datatables-1.11.2/spanish.txt' %}'
+          }
+        });
+    });
+  </script>
+{% endblock %}
+
