@@ -23,14 +23,15 @@
     </table>
   </div>
   <div class="card-footer">
-    <a href="{{ create_url }}" class="btn btn-primary btn-flat" id="btnTest">
+    <button type="button" onclick="openCreateModal('{% url 'create_category' %}')" class="btn btn-primary btn-flat">
       <i class="fas fa-plus"></i>New Category
-    </a>
+    </button>
   </div>
+</div>  
+<div class="modal fade" role="dialog" id="createModal">
+
 </div>
 {% endblock %}
-
-
 {% block javascript %}
   <script type="application/javascript">
     $(function(){
@@ -42,7 +43,7 @@
           }
         });
 
-        $('#btnTest').on('click',function(){
+        /*$('#btnTest').on('click',function(){
           $.ajax({
             url: '{% url 'category_list' %}',
             type:'POST',
@@ -57,7 +58,7 @@
           }).always(function(data){
             alert('complete');
           });
-        });
+        });*/
     });
   </script>
 {% endblock %}

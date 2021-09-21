@@ -4,19 +4,33 @@
     <tr>
         <th scope="col">ID</th>
         <th scope="col">Name</th>
+        <th scope="col">Descripción</th>
         <th scope="col">Action</th>
     </tr>
 {% endblock %}
 {% block rows %}
     {% for c in object_list %}
-    <tr>
-        <td>{{c.id}}</td>
-        <td>{{c.name}}</td>
-        <td>
-            <button type="button" onclick="openDeleteModal('{% url 'delete_category' c.id %}')" class="btn btn-danger"><i class="fas fa-trash"></i></button>
-            <button class="btn btn-warning" onclick="openEditModal('{% url 'update_category' c.id %}')"><i class="fas fa-edit"></i></button>
-        </td>
-    </tr>
+        {% if c.desc %}
+            <tr>
+                <td>{{c.id}}</td>
+                <td>{{c.name}}</td>
+                <td>{{c.desc}}</td>
+                <td>
+                    <button type="button" onclick="openDeleteModal('{% url 'delete_category' c.id %}')" class="btn btn-danger"><i class="fas fa-trash"></i></button>
+                    <button class="btn btn-warning" onclick="openEditModal('{% url 'update_category' c.id %}')"><i class="fas fa-edit"></i></button>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td>{{c.id}}</td>
+                <td>{{c.name}}</td>
+                <td>&nbsp;</td>
+                <td>
+                    <button type="button" onclick="openDeleteModal('{% url 'delete_category' c.id %}')" class="btn btn-danger"><i class="fas fa-trash"></i></button>
+                    <button class="btn btn-warning" onclick="openEditModal('{% url 'update_category' c.id %}')"><i class="fas fa-edit"></i></button>
+                </td>
+            </tr>
+        {% endif %}
     {% endfor %}
     
     <div class="modal fade" role="dialog" id="editModal">

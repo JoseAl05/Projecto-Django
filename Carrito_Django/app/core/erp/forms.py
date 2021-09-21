@@ -24,7 +24,7 @@ class CategoryForm(ModelForm):
             ),
             'desc': Textarea(
                 attrs={
-                    'placeholder':'Ingrese descripción de la',
+                    'placeholder':'Ingrese descripción de la categoría',
                     'rows': 3,
                     'cols': 3
                 }
