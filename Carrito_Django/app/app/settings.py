@@ -38,10 +38,14 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    #Apps
+    
+    #Libs
     'bootstrap5',
-    'core.erp',
+    'bootstrap_modal_forms',
     'widget_tweaks',
+
+    #Apps
+    'core.erp',
 ]
 
 MIDDLEWARE = [

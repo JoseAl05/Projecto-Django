@@ -1,6 +1,7 @@
 from django.db.models.base import Model
 from django.forms import *
 from core.erp.models import Category
+from bootstrap_modal_forms.forms import BSModalModelForm
 
 class CategoryForm(ModelForm):
 
@@ -23,9 +24,21 @@ class CategoryForm(ModelForm):
             ),
             'desc': Textarea(
                 attrs={
-                    'placeholder':'Ingrese su Nombre',
+                    'placeholder':'Ingrese descripción de la',
                     'rows': 3,
                     'cols': 3
                 }
             )
-        }
+        }  
+
+    def save(self, commit=True):
+        data={}
+        form = super()
+        try:
+            if form.is_valid():
+                form.save()
+            else:
+                data['error']=form.errors
+        except Exception as e:
+            data['error'] = str(e)
+        return data

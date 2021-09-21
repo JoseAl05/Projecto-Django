@@ -11,6 +11,7 @@
         </div>
         <div class="card-body">
             {% csrf_token %}
+            <input name="action" type="hidden" value="{{action}}">
             {% if form.errors %}
                 <div class="alert alert-danger alert-dismissible">
                     <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
@@ -50,5 +51,26 @@
             text: errors,
         });
     {% endif %}
+
+    $('form').on('submit',function(e){
+        e.preventDefault();
+        var params = $(this).serializeArray();
+        $.ajax({
+            url: '{% url 'create_category' %}',
+            type:'POST',
+            data: params,
+            dataType:'json'
+        }).done(function(data){
+            if(!data.hasOwnProperty('error')){
+                location.href = '{{list_url}}';
+                return false;
+            }
+            message_error(data.error);
+        }).fail(function(jqXHR,textStatus,errorThrown){
+            alert(textStatus+':'+errorThrown);
+        }).always(function(data){
+
+        });
+    });
 </script>
 {% endblock %}

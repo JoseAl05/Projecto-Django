@@ -12,6 +12,7 @@ class Category(models.Model):
     def __str__(self):
         return 'Nombre: {}'.format(self.name)
 
+    #Transforma en diccionario los parametros del modelo.
     def toJSON(self):
         item = model_to_dict(self)
         return item
