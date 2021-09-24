@@ -42,3 +42,12 @@ class CategoryForm(ModelForm):
         except Exception as e:
             data['error'] = str(e)
         return data
+
+
+    #Se obtiene el objeto del formulario. Se pueden hacer validaciones (Tamaño del campo, etc.)
+    def clean(self):
+        cleaned = super().clean()
+        if len(cleaned['name']) <=  5:
+            raise forms.ValidationError('Validacion')
+        print(cleaned)
+        return cleaned

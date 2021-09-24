@@ -2,18 +2,12 @@ from django.http.response import JsonResponse,HttpResponseRedirect
 from django.shortcuts import render,redirect
 from core.erp.models import Category
 from core.erp.forms import CategoryForm
-from django.views.generic import ListView,CreateView,UpdateView,DeleteView
+from django.views.generic import ListView,CreateView,UpdateView,DeleteView,FormView
 from django.utils.decorators import method_decorator
 from django.contrib.auth.decorators import login_required
 from django.views.decorators.csrf import csrf_exempt 
 from django.urls import reverse_lazy
 
-def category_list(request):
-    data= {
-        'title': 'Listado de Categorías',
-        'categories': Category.objects.all()
-    }
-    return render(request,'category/list.html',data)
 
 #Vista basade en Clase ListView
 class CategoryListView(ListView):
@@ -32,10 +26,17 @@ class CategoryListView(ListView):
     def post(self, request, *args, **kwargs):
         data = {}
         try:
-            data = Category.objects.get(pk=request.POST['id']).toJSON()
+            action = request.POST['action']
+            if action == 'searchdata':
+                data = []
+                for i in Category.objects.all():
+                    data.append(i.toJSON())
+            else:
+                data['error'] = 'Ha ocurrido un error'
+            #data = Category.objects.get(pk=request.POST['id']).toJSON()
         except Exception as e:
             data['error'] = str(e)
-        return JsonResponse(data)
+        return JsonResponse(data,safe=False)
     
     #Modificación de la funcion get_context_data. Se genera variable "context". Se asignan nombres la lista para poder ser ocupadas en el template.
     def get_context_data(self, **kwargs):
@@ -132,4 +133,25 @@ class CategoryDeleteView(DeleteView):
         context['list_url'] = reverse_lazy('category_list')
         context['entity'] = 'Categorías'
         context['action'] = 'delete'
+        return context
+
+class CategoryFormView(FormView):
+    form_class = CategoryForm
+    template_name = 'category/create.html'
+    success_url = reverse_lazy('category_list')
+
+    def form_valid(self, form):
+        print(form.errors)
+        return super().form_valid(form)
+
+    def form_invalid(self, form):
+        print(form.errors)
+        return super().form_invalid(form)
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)    
+        context['title'] = 'Form Category'
+        context['entity'] = 'Categorías' 
+        context['list_url'] = reverse_lazy('category_list')
+        context['action'] = 'add' 
         return context

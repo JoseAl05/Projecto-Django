@@ -1,4 +1,4 @@
-function message_error(obj){
+function message_category_error(obj){
     var html = '';
     if(typeof (obj) === 'object'){
         html = '<ul style="text-align: left;">';
@@ -17,6 +17,18 @@ function message_error(obj){
     });
 }
 
+function message_category_success(){
+    Swal.fire({
+        icon: 'success',
+        title: 'Success',
+        text: 'Category saved successfully!',
+    }).then(function(result){
+        if(result.value){
+            location.href = '/erp/category/list';
+        }
+    })
+}
+
 function openEditModal(url){
 
     $('#editModal').load(url,function(){
@@ -25,6 +37,7 @@ function openEditModal(url){
 };
 
 function openDeleteModal(url){
+    console.log(url);
     $('#deleteModal').load(url,function(){
         $(this).modal('show');
     });

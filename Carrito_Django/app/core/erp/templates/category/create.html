@@ -40,8 +40,24 @@
             </div>
         </form>
         <script>
+            {% comment %} {% if form.errors %}
+                var errors = '';
+                {% for field in form %}
+                    {% for error in field.errors %}
+                        errors += '{{error}}\n'
+                    {% endfor %}
+                {% endfor %}
+                {% for error in form.non_field_errors %}
+                    errors += '{{error}}\n'
+                {% endfor %}
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Error',
+                    text: errors,
+                });
+            {% endif %} {% endcomment %}
             $('form').on('submit',function(e){
-                e.preventDefault()
+                e.preventDefault();
                 var params = $(this).serializeArray();
                 $.ajax({
                     url: '{% url 'create_category' %}',
@@ -49,15 +65,11 @@
                     data: params,
                     dataType:'json'
                 }).done(function(data){
-                    Swal.fire({
-                        icon: 'success',
-                        title: 'Success',
-                        text: 'Category saved successfully!',
-                    }).then(function(result){
-                        if(result.value){
-                            location.href = '{{list_url}}';
-                        }
-                    })
+                    if(!data.hasOwnProperty('error')){
+                        message_category_success();
+                        return false;
+                    }
+                    message_category_error(data.error);
                 }).fail(function(jqXHR,textStatus,errorThrown){
                     alert(textStatus+':'+errorThrown);
                 }).always(function(data){
