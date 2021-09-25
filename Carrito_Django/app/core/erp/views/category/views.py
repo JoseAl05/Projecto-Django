@@ -19,6 +19,7 @@ class CategoryListView(ListView):
 
     #Excepcion del token csrfmiddleware
     @method_decorator(csrf_exempt)
+    @method_decorator(login_required)
     def dispatch(self, request, *args, **kwargs):
         return super().dispatch(request, *args, **kwargs)
 
@@ -44,7 +45,7 @@ class CategoryListView(ListView):
         context['title'] = 'List of Categories' 
         context['create_url'] = reverse_lazy('create_category')
         context['list_url'] = reverse_lazy('category_list')
-        context['entity'] = 'Categorías'
+        context['entity'] = 'Categories'
         return context
 
 class CategoryCreateView(CreateView):
@@ -52,6 +53,10 @@ class CategoryCreateView(CreateView):
     form_class = CategoryForm
     template_name = 'category/create.html'
     success_url = reverse_lazy('category_list')
+
+    @method_decorator(login_required)
+    def dispatch(self, request, *args, **kwargs):
+        return super().dispatch(request, *args, **kwargs)
 
     def post(self, request, *args, **kwargs):
         data = {}
@@ -70,9 +75,10 @@ class CategoryCreateView(CreateView):
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)    
         context['title'] = 'Create Category'
-        context['entity'] = 'Categorías' 
+        context['entity'] = 'Categories' 
         context['list_url'] = reverse_lazy('category_list')
-        context['action'] = 'add' 
+        context['action'] = 'add'
+        context['url_create'] = '/erp/category/create/'
         return context
 
 class CategoryUpdateView(UpdateView):
@@ -81,6 +87,7 @@ class CategoryUpdateView(UpdateView):
     template_name = 'category/edit.html'
     success_url = reverse_lazy('category_list')
 
+    @method_decorator(login_required)
     def dispatch(self, request, *args, **kwargs):
         self.object = self.get_object()
         return super().dispatch(request, *args, **kwargs)
@@ -104,8 +111,9 @@ class CategoryUpdateView(UpdateView):
         context['title'] = 'Update Category' 
         context['create_url'] = reverse_lazy('create_category')
         context['list_url'] = reverse_lazy('category_list')
-        context['entity'] = 'Categorías'
+        context['entity'] = 'Categories'
         context['action'] = 'edit'
+        context['url_edit'] = '/erp/category/update/'
         return context
 
 class CategoryDeleteView(DeleteView):
@@ -113,6 +121,7 @@ class CategoryDeleteView(DeleteView):
     template_name = 'category/delete.html'
     success_url = reverse_lazy('category_list')
 
+    @method_decorator(login_required)
     def dispatch(self, request, *args, **kwargs):
         self.object = self.get_object()
         return super().dispatch(request, *args, **kwargs)
@@ -131,7 +140,7 @@ class CategoryDeleteView(DeleteView):
         context['title'] = 'Delete Category' 
         context['create_url'] = reverse_lazy('create_category')
         context['list_url'] = reverse_lazy('category_list')
-        context['entity'] = 'Categorías'
+        context['entity'] = 'Categories'
         context['action'] = 'delete'
         return context
 
@@ -151,7 +160,7 @@ class CategoryFormView(FormView):
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)    
         context['title'] = 'Form Category'
-        context['entity'] = 'Categorías' 
+        context['entity'] = 'Categories' 
         context['list_url'] = reverse_lazy('category_list')
         context['action'] = 'add' 
         return context

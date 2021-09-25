@@ -134,6 +134,10 @@ STATICFILES_DIRS = [
     BASE_DIR / "static",
 ]
 
-LOGIN_REDIRECT_URL = '/erp/category/list/'
+LOGIN_REDIRECT_URL = '/erp/dashboard/'
 
-LOGOUT_REDIRECT_URL = '/login'
+LOGOUT_REDIRECT_URL = '/login/'
+
+NAME_VIEW_LOGIN_REDIRECT = 'dashboard'
+
+LOGIN_URL = '/login/'

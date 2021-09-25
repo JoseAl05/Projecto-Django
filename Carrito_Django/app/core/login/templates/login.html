@@ -27,8 +27,9 @@
     <div class="card-body login-card-body">
       <p class="login-box-msg">Sign in to start your session</p>
 
-      <form action="." method="post">
+      <form action="{% url 'login' %}" method="post">
         {% csrf_token %}
+        <input type="hidden" name="next" value="{{next}}" />
         <div class="input-group mb-3">
           {{form.username | add_class:'form-control' | attr:'autocomplete:off' | attr:'placeholder: Enter your username'}}
           <div class="input-group-append">

@@ -59,22 +59,7 @@
             $('form').on('submit',function(e){
                 e.preventDefault();
                 var params = $(this).serializeArray();
-                $.ajax({
-                    url: '{% url 'create_category' %}',
-                    type:'POST',
-                    data: params,
-                    dataType:'json'
-                }).done(function(data){
-                    if(!data.hasOwnProperty('error')){
-                        message_category_success();
-                        return false;
-                    }
-                    message_category_error(data.error);
-                }).fail(function(jqXHR,textStatus,errorThrown){
-                    alert(textStatus+':'+errorThrown);
-                }).always(function(data){
-
-                });
+                submit_category('{% url 'create_category' %}',params);
             });
         </script>
     </div>
