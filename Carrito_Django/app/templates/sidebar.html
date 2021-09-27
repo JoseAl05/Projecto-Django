@@ -52,10 +52,16 @@
               data-accordion="false"
             >
               <li class="nav-item">
-                <a href="{{list_url}}" class="nav-link">
+                <a href="{% url 'category_list' %}" class="nav-link">
                   <i class="nav-icon fas fa-list"></i>
                   <p>
-                    {{entity}}
+                    Categories
+                  </p>
+                </a>
+                <a href="{% url 'product_list' %}" class="nav-link">
+                  <i class="nav-icon fas fa-dolly"></i>
+                  <p>
+                    Products
                   </p>
                 </a>
               </li>

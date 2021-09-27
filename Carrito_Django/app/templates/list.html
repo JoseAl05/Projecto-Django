@@ -1,66 +1,49 @@
 {% extends 'home.html' %}
 {% load static %}
 {% block content %}
-<div class="card card-default">
-  <div class="card-header">
-    <h3 class="card-title">
-      <i class="fas fa-search"></i>
-        {{ title }}
-    </h3>
+  <div class="card card-default">
+    <div class="card-header">
+      <h3 class="card-title">
+        <i class="fas fa-search"></i>
+          {{ title }}
+      </h3>
+    </div>
+    <div class="card-body">
+      <table class="table" id="data">
+        <thead>
+        {% block columns %}
+
+        {% endblock %}
+        </thead>
+        <tbody>
+        {% block rows %}
+
+        {% endblock %}
+        </tbody>
+      </table>
+    </div>
+    <div class="card-footer">
+      <button type="button" onclick="openCreateModal('{{create_url}}')" class="btn btn-primary btn-flat">
+        <i class="fas fa-plus"></i>Add
+      </button>
+    </div>
+  </div>  
+  <div class="modal fade" role="dialog" id="createModal">
+
   </div>
-  <div class="card-body">
-    <table class="table" id="categories">
-      <thead>
-      {% block columns %}
 
-      {% endblock %}
-      </thead>
-      <tbody>
-      {% block rows %}
-
-      {% endblock %}
-      </tbody>
-    </table>
-  </div>
-  <div class="card-footer">
-    <button type="button" onclick="openCreateModal('{% url 'create_category' %}')" class="btn btn-primary btn-flat">
-      <i class="fas fa-plus"></i>New Category
-    </button>
-  </div>
-</div>  
-<div class="modal fade" role="dialog" id="createModal">
-
-</div>
-
-{% endblock %}
-{% block javascript %}
   <script type="application/javascript">
-    $(function(){
-        $('#categories').DataTable({
+      {% comment %} $(function(){
+        $('#data').DataTable({
           responsive:true,
-          autoWidth:false,
-          'language': {
-            url:'{% static 'lib/datatables-1.11.2/spanish.txt' %}'
-          }
-        });
+          autoWidth:true,
+        })
+      }); {% endcomment %}
+    </script>
 
-        /*$('#btnTest').on('click',function(){
-          $.ajax({
-            url: '{% url 'category_list' %}',
-            type:'POST',
-            data:{
-              id:1
-            },
-            dataType:'json'
-          }).done(function(data){
-            console.log(data)
-          }).fail(function(jqXHR,textStatus,errorThrown){
-            alert(textStatus+':'+errorThrown);
-          }).always(function(data){
-            alert('complete');|
-          });
-        });*/
-    });
-  </script>
 {% endblock %}
+
+
+
+
 

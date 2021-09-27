@@ -3,12 +3,12 @@
 <div class="modal-dialog modal-lg" role="document">
     <div class="modal-content">
         <div class="modal-header">
-            <h2 class="modal-title">{{title}}</h2>
+            <h2 class="modal-title">{{title}} : {{object.name}}</h2>
             <button class="close" type="button" data-bs-dismiss="modal" aria-label="close">
                 <span aria-hidden="true">&times;</span>
             </button>
         </div>
-        <form method="POST" action="{% url 'create_category' %}" class="form">
+        <form method="POST" action="{% url 'update_category' object.id %}" class="form">
             {% csrf_token %}
             <input name="action" type="hidden" value="{{action}}">
             {% if form.errors %}
@@ -41,9 +41,9 @@
         </form>
         <script>
             $('form').on('submit',function(e){
-                e.preventDefault();
-                var params = $(this).serializeArray();
-                submit_category('{% url 'create_category' %}',params);
+                e.preventDefault()
+                var params = new FormData(this);
+                edit_product('{% url 'update_product' object.id %}',params)
             });
         </script>
     </div>

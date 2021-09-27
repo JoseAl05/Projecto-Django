@@ -10,6 +10,7 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/3.2/ref/settings/
 """
 
+import os
 from pathlib import Path
 from config.db import POSTGRESQL
 
@@ -141,3 +142,7 @@ LOGOUT_REDIRECT_URL = '/login/'
 NAME_VIEW_LOGIN_REDIRECT = 'dashboard'
 
 LOGIN_URL = '/login/'
+
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media/')
+
+MEDIA_URL = '/media/'

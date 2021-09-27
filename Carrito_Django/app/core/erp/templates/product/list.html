@@ -1,0 +1,52 @@
+{% extends 'list.html' %}
+{% load static %}
+
+{% block head_list %}
+    <script src="{% static '/js/product/list.js' %}"></script>
+{% endblock %}
+
+{% block columns %}
+    <tr>
+        <th scope="col">ID</th>
+        <th scope="col">Name</th>
+        <th scope="col">Categoria</th>
+        <th scope="col">PVP</th>
+        <th scope="col">Accion</th>
+    </tr>
+{% endblock %}
+{% block rows %}
+        {% comment %} {% for obj in object_list %}
+            <tr>
+                <td>{{ obj.id }}</td>
+                <td>{{ obj.name }}</td>
+                <td>{{ obj.cat.name }}</td>
+                <td class="text-center">
+                    {{ obj.image }}
+                    <img src="{{ obj.get_image }}" class="img-fluid d-block mx-auto" style="width: 20px; height: 20px;">
+                </td>
+                <td>{{ obj.pvp }}</td>
+                <td class="text-center">
+                    <a href="{% url 'update_product' obj.id %}" class="btn btn-warning">
+                        <i class="fas fa-edit"></i>
+                    </a>
+                    <a href="{% url 'delete_product' obj.id %}" class="btn btn-danger">
+                        <i class="fas fa-trash"></i>
+                    </a>
+                </td>
+            </tr>
+        {% endfor %} {% endcomment %}
+    
+    <div class="modal fade" role="dialog" id="editModal">
+
+    </div>
+
+    <div class="modal fade" role="dialog" id="deleteModal">
+
+    </div>
+
+{% endblock %}
+
+{% block javascript %}
+
+
+{% endblock %}

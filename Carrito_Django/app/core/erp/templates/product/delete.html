@@ -3,12 +3,12 @@
 <div class="modal-dialog modal-lg" role="document">
     <div class="modal-content">
         <div class="modal-header">
-            <h2 class="modal-title">{{title}}</h2>
+            <h2 class="modal-title">{{title}} : {{object.name}}</h2>
             <button class="close" type="button" data-bs-dismiss="modal" aria-label="close">
                 <span aria-hidden="true">&times;</span>
             </button>
         </div>
-        <form method="POST" action="{% url 'create_category' %}" class="form">
+        <form method="POST" action="{% url 'delete_category' object.id %}" class="form">
             {% csrf_token %}
             <input name="action" type="hidden" value="{{action}}">
             {% if form.errors %}
@@ -25,25 +25,23 @@
                 </div>
             {% endif %}
             <div class="modal-body row">
-                {% for field in form.visible_fields  %}
-                    <div class="form-group">
-                        <label>{{field.label}}:</label>
-                        {{field|add_class:'form-control'|attr:'autocomplete:off'}}
-                    </div>
-                {% endfor %}
+                <div class="alert alert-danger alert-dismissible">
+                    <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+                    <h5><i class="icon fas fa-ban"></i>Are you sure to delete this category?</h5>
+                </div>
             </div>
             <div class="form-group">
                 <div clas="modal-footer">
-                    <button type="button" class="btn btn-danger" data-bs-dismiss="modal" id="buttonCancelEditCategory">Cancelar</button>
-                    <button type="submit" class="btn btn-primary btn-lg" id="buttonSubmitEditCategory">Save</button>
+                    <button type="button" class="btn btn-danger" data-bs-dismiss="modal" id="buttonCancelDeleteCategory">Cancelar</button>
+                    <button type="submit" class="btn btn-primary btn-lg" id="buttonSubmitDeleteCategory">Save</button>
                 </div>
             </div>
         </form>
         <script>
             $('form').on('submit',function(e){
-                e.preventDefault();
-                var params = $(this).serializeArray();
-                submit_category('{% url 'create_category' %}',params);
+                e.preventDefault()
+                var params = new FormData(this);
+                delete_product('{% url 'delete_product' object.id %}',params,'{{object.name}}')
             });
         </script>
     </div>

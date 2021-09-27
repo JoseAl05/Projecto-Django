@@ -1,5 +1,5 @@
 $(function(){
-    $('#categories').DataTable({
+    $('#data').DataTable({
         responsive: true,
         autoWidth: false,
         destroy: true,
@@ -15,18 +15,19 @@ $(function(){
         columns:[
             {'data':'id'},
             {'data':'name'},
-            {'data':'desc'},
-            {'data':'desc'},
+            {'data':'cat'},
+            {'data':'pvp'},
+            {'data':'pvp'},
         ],
         columnDefs:[
             {
-                targets: [3],
+                targets: [4],
                 class:'text-center',
                 orderable:false,
                 render:function(data,type,row){
                     
-                    var buttons = '<button type="button" onclick="openDeleteModal(\'/erp/category/delete/' + row.id + '/\')" class="btn btn-danger"><i class="fas fa-trash"></i></button> ';
-                    buttons += '<button type="button" class="btn btn-warning" onclick="openEditModal(\'/erp/category/update/' + row.id + '/\')"><i class="fas fa-edit"></i></button>';
+                    var buttons = '<button type="button" onclick="openDeleteModal(\'/erp/product/delete/' + row.id + '/\')" class="btn btn-danger"><i class="fas fa-trash"></i></button> ';
+                    buttons += '<button type="button" class="btn btn-warning" onclick="openEditModal(\'/erp/product/update/' + row.id + '/\')"><i class="fas fa-edit"></i></button>';
                     return buttons;
                 }
             },
