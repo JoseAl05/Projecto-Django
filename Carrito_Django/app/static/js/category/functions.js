@@ -41,10 +41,13 @@ function submit_category(url,params){
                         position:'top-end',
                         icon:'success',
                         showConfirmButton: false,
+                        timer:1000
                     });
-                    setTimeout(function(){
-                        location.href = '/erp/category/list';
-                    },1000)
+
+                    getCategoryData();
+
+                    $('#createModal').modal('hide');
+
                     return false;
                 }
                 //Si hubo algun error al ingresar los datos se muestra la alerta con los errores
@@ -61,7 +64,11 @@ function submit_category(url,params){
                 denyButtonText: 'No', 
             }).then(function(result){
                 if(result.isConfirmed){
-                    Swal.fire('Enter a new category','','info');
+                    Swal.fire({
+                        title:'Enter a new category',
+                        icon:'info',
+                        timer:1500
+                    });
                 }else if(result.isDenied){
                     Swal.fire({
                         title:'Nothing was added!',
@@ -69,9 +76,9 @@ function submit_category(url,params){
                         position:'top-end',
                         showConfirmButton: false,
                     })
-                    setTimeout(function(){
-                        location.href = '/erp/category/list';
-                    },1000)
+
+                    $('#createModal').modal('hide');
+
                 }
             });
         }
@@ -100,10 +107,13 @@ function edit_category(url,params){
                         position:'top-end',
                         icon:'success',
                         showConfirmButton: false,
+                        timer:1000
                     });
-                    setTimeout(function(){
-                        location.href = '/erp/category/list';
-                    },1000)
+
+                    getCategoryData();
+
+                    $('#editModal').modal('hide');
+
                     return false;
                 }
                 //Si hubo algun error al ingresar los datos se muestra la alerta con los errores
@@ -146,10 +156,13 @@ function delete_category(url,params,name){
                         position:'top-end',
                         icon:'success',
                         showConfirmButton: false,
+                        timer:1000
                     });
-                    setTimeout(function(){
-                        location.href = '/erp/category/list';
-                    },1000)
+
+                    getCategoryData();
+
+                    $('#deleteModal').modal('hide');
+
                     return false;
                 }
                 //Si hubo algun error al ingresar los datos se muestra la alerta con los errores
@@ -168,25 +181,5 @@ function delete_category(url,params,name){
         }
     });
 }
-
-function openEditModal(url){
-
-    $('#editModal').load(url,function(){
-        $(this).modal('show');
-    });
-};
-
-function openDeleteModal(url){
-    console.log(url);
-    $('#deleteModal').load(url,function(){
-        $(this).modal('show');
-    });
-};
-
-function openCreateModal(url){
-    $('#createModal').load(url,function(){
-        $(this).modal('show');
-    });
-};
 
 

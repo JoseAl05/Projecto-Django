@@ -37,9 +37,26 @@
       <aside class="control-sidebar control-sidebar-dark"></aside>
     </div>
     {% block javascript %}
-      
     {% endblock %}
+    <script type="text/javascript" src="{% static 'js/functions.js' %}"></script>
     <script type="text/javascript" src="{% static 'js/category/functions.js' %}"></script>
     <script type="text/javascript" src="{% static 'js/product/functions.js' %}"></script>
+    <script type="text/javascript" src="{% static 'js/client/functions.js' %}"></script>
+    <script>
+      {% if messages %}
+        var html = '<p>';
+        {% for message in messages %}
+          html += '{{message}}<br>';
+        {% endfor %}
+        html += '</p>';
+        Swal.fire({
+          icon: 'error',
+          html: html,
+          title: 'Error',
+        }).then(function(){
+          location.href = ''
+        })
+      {% endif %}
+    </script>
   </body>
 </html>

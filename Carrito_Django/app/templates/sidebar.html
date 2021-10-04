@@ -17,7 +17,7 @@
           <div class="user-panel mt-3 pb-3 mb-3 d-flex">
             <div class="image">
               <img
-                src="{% static 'lib/adminlte-3.1.0/img/user2-160x160.jpg' %}"
+                src="{{request.user.get_image}}"
                 class="img-circle elevation-2"
                 alt="User Image"
               />
@@ -58,10 +58,28 @@
                     Categories
                   </p>
                 </a>
+              </li>
+              <li class="nav-item">
                 <a href="{% url 'product_list' %}" class="nav-link">
                   <i class="nav-icon fas fa-dolly"></i>
                   <p>
                     Products
+                  </p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="{% url 'client_list' %}" class="nav-link">
+                  <i class="nav-icon fas fa-users"></i>
+                  <p>
+                    Clients
+                  </p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="{% url 'create_sale' %}" class="nav-link">
+                  <i class="nav-icon far fa-money-bill-alt"></i>
+                  <p>
+                    Sales
                   </p>
                 </a>
               </li>

@@ -43,10 +43,13 @@ function submit_product(url,params){
                         position:'top-end',
                         icon:'success',
                         showConfirmButton: false,
+                        timer:1000
                     });
-                    setTimeout(function(){
-                        location.href = '/erp/product/list';
-                    },1000)
+
+                    getProductData();
+
+                    $('#createModal').modal('hide');
+
                     return false;
                 }
                 //Si hubo algun error al ingresar los datos se muestra la alerta con los errores
@@ -63,7 +66,11 @@ function submit_product(url,params){
                 denyButtonText: 'No', 
             }).then(function(result){
                 if(result.isConfirmed){
-                    Swal.fire('Enter a new product','','info');
+                    Swal.fire({
+                        title:'Enter a new product',
+                        icon:'info',
+                        timer:1500
+                    });
                 }else if(result.isDenied){
                     Swal.fire({
                         title:'Nothing was added!',
@@ -71,9 +78,11 @@ function submit_product(url,params){
                         position:'top-end',
                         showConfirmButton: false,
                     })
-                    setTimeout(function(){
-                        location.href = '/erp/product/list';
-                    },1000)
+
+                    getProductData();
+
+                    $('#createModal').modal('hide');
+
                 }
             });
         }
@@ -104,10 +113,13 @@ function edit_product(url,params){
                         position:'top-end',
                         icon:'success',
                         showConfirmButton: false,
+                        timer:1000
                     });
-                    setTimeout(function(){
-                        location.href = '/erp/product/list';
-                    },1000)
+
+                    getProductData();
+
+                    $('#editModal').modal('hide');
+
                     return false;
                 }
                 //Si hubo algun error al ingresar los datos se muestra la alerta con los errores
@@ -152,10 +164,13 @@ function delete_product(url,params,name){
                         position:'top-end',
                         icon:'success',
                         showConfirmButton: false,
+                        timer:1000
                     });
-                    setTimeout(function(){
-                        location.href = '/erp/product/list';
-                    },1000)
+
+                    getProductData();
+
+                    $('#deleteModal').modal('hide');
+
                     return false;
                 }
                 //Si hubo algun error al ingresar los datos se muestra la alerta con los errores

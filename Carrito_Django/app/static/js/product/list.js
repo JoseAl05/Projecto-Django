@@ -1,4 +1,4 @@
-$(function(){
+function getProductData(){
     $('#data').DataTable({
         responsive: true,
         autoWidth: false,
@@ -36,4 +36,4 @@ $(function(){
 
         }
     });
-});
+};

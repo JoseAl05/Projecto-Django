@@ -1,4 +1,4 @@
-$(function(){
+function getCategoryData(){
     $('#data').DataTable({
         responsive: true,
         autoWidth: false,
@@ -35,4 +35,4 @@ $(function(){
 
         }
     });
-});
+};

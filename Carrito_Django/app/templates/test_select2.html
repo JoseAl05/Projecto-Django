@@ -1,0 +1,101 @@
+{% extends 'home.html' %}
+{% load widget_tweaks %}
+{% block content %}
+<form class='form' method='POST' action='.'>
+    <div class="card card-default">
+        <div class="card-header">
+            <h3 class="card-title">
+            <i class="fas fa-plus"></i>
+                {{ title }}
+            </h3>
+        </div>
+        <div class="card-body">
+            <div class="form-group">
+                <label for="categories">Categories</label>
+                {{form.categories}}
+            </div>
+            <div class="form-group">
+                <label for="products">Products</label>
+                {{form.products}}
+            </div>
+            <div class="form-group">
+                <label for="search">Search</label>
+                {{form.search}}
+            </div>
+        </div>
+    </div>
+</form>
+<script type="application/javascript">
+    var select_products = $('select[name="products"]');
+    $(function (){
+
+        $('.select2').select2({
+            theme:'bootstrap4',
+            language:'es'
+        });
+
+        //Autocomplete
+
+        $('select[name="search"]').select2({
+            theme:'bootstrap4',
+            language:'es',
+            allowClear:true,
+            ajax:{
+                delay:500,
+                url: window.location.pathname,
+                type:'POST',
+                data: function(params){
+                    var queryParameters = {
+                        term:params.term,
+                        action:'autocomplete'
+                    }
+
+                    return queryParameters;
+                },
+                processResults: function (data) {
+                    return {
+                      results: data
+                    };
+                },
+            },
+            placeholder: 'Search',
+            minimumInputLength: 1,
+        })
+        
+        //-----------------------------
+        $('select[name="categories"]').on('change', function(){
+            var id = $(this).val();
+            var options = '<option value="">-------------</option>';
+            if(id === ''){
+                select_products.html(options);
+                return false;
+            }
+            $.ajax({
+                url: window.location.pathname,
+                type:'POST',
+                data: {
+                    'action':'searc_product_id',
+                    'id' : id
+                },
+                dataType:'json'
+            }).done(function(data){
+                if(!data.hasOwnProperty('error')){
+                    select_products.html('').select2({
+                        theme:'bootstrap4',
+                        language:'es',
+                        data: data
+                    });
+                    /*$.each(data, function(key,value){
+                        options += '<option value="'+ value.id +'">'+ value.name +'</option>'
+                    });*/
+                    return false;
+                }
+            }).fail(function(jqXHR,textStatus,errorThrown){
+                alert(textStatus+':'+errorThrown);
+            }).always(function(data){
+                //select_products.html(options);
+            })
+        })
+    });
+</script>
+{% endblock %}

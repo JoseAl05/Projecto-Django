@@ -1,0 +1,36 @@
+{% extends 'list.html' %}
+{% load static %}
+
+{% block head_list %}
+    <script src="{% static '/js/client/list.js' %}"></script>
+{% endblock %}
+
+{% block columns %}
+    <tr>
+        <th scope="col">ID</th>
+        <th scope="col">Names</th>
+        <th scope="col">Surnames</th>
+        <th scope="col">DNI</th>
+        <th scope="col">Birthday</th>
+        <th scope="col">Address</th>
+        <th scope="col">Gender</th>
+        <th scope="col">Actions</th>
+    </tr>
+{% endblock %}
+{% block rows %}
+    
+    
+    <div class="modal fade" role="dialog" id="editModal">
+
+    </div>
+
+    <div class="modal fade" role="dialog" id="deleteModal">
+
+    </div>
+
+{% endblock %}
+
+{% block javascript %}
+
+
+{% endblock %}

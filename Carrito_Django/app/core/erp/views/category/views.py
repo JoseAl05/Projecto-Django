@@ -1,25 +1,30 @@
+from core.erp.mixins import isSuperUserMixin,ValidatePermissionRequiredMixin
 from django.http.response import JsonResponse
 from django.shortcuts import render,redirect
 from core.erp.models import Category
 from core.erp.forms import CategoryForm
 from django.views.generic import ListView,CreateView,UpdateView,DeleteView,FormView
 from django.utils.decorators import method_decorator
+from django.contrib.auth.mixins import LoginRequiredMixin,PermissionRequiredMixin
 from django.contrib.auth.decorators import login_required
 from django.views.decorators.csrf import csrf_exempt 
 from django.urls import reverse_lazy
 
 
 #Vista basade en Clase ListView
-class CategoryListView(ListView):
+class CategoryListView(LoginRequiredMixin,ValidatePermissionRequiredMixin,ListView):
+    
+    permission_required = ('erp.change_category','erp.delete_category')
+    
     #Se Define Modelo.
     model = Category
-
+    
     #Se Define nombre del Template que contiene la lista.
     template_name = 'category/list.html'
 
     #Excepcion del token csrfmiddleware
     @method_decorator(csrf_exempt)
-    @method_decorator(login_required)
+    #@method_decorator(login_required)
     def dispatch(self, request, *args, **kwargs):
         return super().dispatch(request, *args, **kwargs)
 
@@ -31,12 +36,9 @@ class CategoryListView(ListView):
             if action == 'searchdata':
                 data = []
                 for i in Category.objects.all():
-                    print(i)
                     data.append(i.toJSON())
-                    print(data)
             else:
                 data['error'] = 'Ha ocurrido un error'
-            #data = Category.objects.get(pk=request.POST['id']).toJSON()
         except Exception as e:
             data['error'] = str(e)
         return JsonResponse(data,safe=False)
@@ -48,10 +50,14 @@ class CategoryListView(ListView):
         context['create_url'] = reverse_lazy('create_category')
         context['list_url'] = reverse_lazy('category_list')
         context['entity'] = 'Categories'
-        print(context)
+        context['dt_function'] = 'getCategoryData()'
         return context
 
-class CategoryCreateView(CreateView):
+class CategoryCreateView(ValidatePermissionRequiredMixin,CreateView):
+
+    permission_required = 'erp.view_category'
+    url_redirect = reverse_lazy('category_list')
+
     model = Category
     form_class = CategoryForm
     template_name = 'category/create.html'
@@ -73,7 +79,7 @@ class CategoryCreateView(CreateView):
         except Exception as e:
             data['error'] = str(e)
 
-        return JsonResponse(data)   
+        return JsonResponse(data) 
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)    

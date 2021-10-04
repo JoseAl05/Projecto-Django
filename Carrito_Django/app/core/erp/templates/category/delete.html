@@ -11,19 +11,6 @@
         <form method="POST" action="{% url 'delete_category' object.id %}" class="form">
             {% csrf_token %}
             <input name="action" type="hidden" value="{{action}}">
-            {% if form.errors %}
-                <div class="alert alert-danger alert-dismissible">
-                    <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
-                    <h5><i class="icon fas fa-ban"></i>Error al guardar categoria</h5>
-                    <ul>
-                        {% for field in form %}
-                            {% for error in field.errors %}
-                                <li>{{error}}</li>
-                            {% endfor %}
-                        {% endfor %}
-                    </ul>
-                </div>
-            {% endif %}
             <div class="modal-body row">
                 <div class="alert alert-danger alert-dismissible">
                     <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>

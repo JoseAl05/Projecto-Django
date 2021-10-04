@@ -1,7 +1,9 @@
-from core.erp.views.test.views import TestView
+from core.erp.views.test.views import TestView,TestView2
 from django.urls import path
 from core.erp.views.category.views import *
 from core.erp.views.product.views import *
+from core.erp.views.client.views import *
+from core.erp.views.sale.views import *
 from core.erp.views.dashboard.views import DashboardView
 
 urlpatterns = [
@@ -20,7 +22,22 @@ urlpatterns = [
     path('product/delete/<int:pk>/',ProductDeleteView.as_view(),name='delete_product'),
     path('product/form/',ProductFormView.as_view(),name='form_product'),
 
+    #Clients
+    path('client/list/',ClientListView.as_view(),name='client_list'),
+    path('client/create/',ClientCreateView.as_view(),name='create_client'),
+    path('client/update/<int:pk>/',ClientUpdateView.as_view(),name='update_client'),
+    path('client/delete/<int:pk>/',ClientDeleteView.as_view(),name='delete_client'),
+
+    #Sales
+    path('sale/list/',SaleListView.as_view(),name='sale_list'),
+    path('sale/create/',SaleCreateView.as_view(),name='create_sale'),
+    # path('sale/update/<int:pk>/',ClientUpdateView.as_view(),name='update_client'),
+    # path('sale/delete/<int:pk>/',ClientDeleteView.as_view(),name='delete_client'),
+
     #Dashboard
     path('dashboard/',DashboardView.as_view(),name='dashboard'),
+
+    #Tests
     path('test/',TestView.as_view(),name='test'),
+    path('test_select2/',TestView2.as_view(),name='test2'),
 ]

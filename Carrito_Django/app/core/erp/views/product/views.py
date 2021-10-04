@@ -1,3 +1,4 @@
+from core.erp.mixins import isSuperUserMixin
 from django.http.response import JsonResponse,HttpResponseRedirect
 from core.erp.models import Product
 from core.erp.forms import ProductForm
@@ -10,7 +11,7 @@ from django.urls import reverse_lazy
 
 
 #Vista basade en Clase ListView
-class ProductListView(ListView):
+class ProductListView(isSuperUserMixin,ListView):
     #Se Define Modelo.
     model = Product
 
@@ -48,6 +49,7 @@ class ProductListView(ListView):
         context['create_url'] = reverse_lazy('create_product')
         context['list_url'] = reverse_lazy('product_list')
         context['entity'] = 'Products'
+        context['dt_function'] = 'getProductData()'
         return context
 
 class ProductCreateView(CreateView):

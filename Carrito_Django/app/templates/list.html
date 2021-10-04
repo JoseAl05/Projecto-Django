@@ -5,7 +5,7 @@
     <div class="card-header">
       <h3 class="card-title">
         <i class="fas fa-search"></i>
-          {{ title }}
+          {{ title }} // {{date_now}}
       </h3>
     </div>
     <div class="card-body">
@@ -31,16 +31,9 @@
   <div class="modal fade" role="dialog" id="createModal">
 
   </div>
-
   <script type="application/javascript">
-      {% comment %} $(function(){
-        $('#data').DataTable({
-          responsive:true,
-          autoWidth:true,
-        })
-      }); {% endcomment %}
-    </script>
-
+    {{dt_function}}
+  </script>
 {% endblock %}
 
 
