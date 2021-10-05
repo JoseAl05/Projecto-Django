@@ -53,7 +53,10 @@ class Product(models.Model):
         return '{}{}'.format(STATIC_URL, 'img/empty.png')
         
     def toJSON(self):
-        item = model_to_dict(self,exclude=['image'])
+        item = model_to_dict(self)
+        item['image'] = self.get_image()
+        item['pvp'] = format(self.pvp,'.2f')
+        # item = model_to_dict(self,exclude=['image'])
         category_name = Category.objects.get(id = item['cat'])
         item['cat'] = category_name.name
         return item

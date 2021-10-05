@@ -44,6 +44,7 @@ INSTALLED_APPS = [
     'bootstrap5',
     'bootstrap_modal_forms',
     'widget_tweaks',
+    'tempus_dominus',
 
     #Apps
     'core.erp',

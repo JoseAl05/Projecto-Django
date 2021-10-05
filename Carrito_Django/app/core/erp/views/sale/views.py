@@ -1,5 +1,6 @@
 from django.http.response import JsonResponse
 from django.shortcuts import render,redirect
+from core.erp.models import Product
 from core.erp.models import Sale
 from core.erp.forms import SaleForm
 from django.views.generic import ListView,CreateView,UpdateView,DeleteView,FormView
@@ -54,6 +55,8 @@ class SaleCreateView(CreateView):
     template_name = 'sale/create.html'
     success_url = reverse_lazy('sale_list')
 
+
+    @method_decorator(csrf_exempt)
     def dispatch(self, request, *args, **kwargs):
         return super().dispatch(request, *args, **kwargs)
 
@@ -61,15 +64,18 @@ class SaleCreateView(CreateView):
         data = {}
         try:
             action = request.POST['action']
-            if action == 'add':
-                form = self.get_form()
-                data = form.save()
+            if action == 'search_product':
+                data = []
+                products = Product.objects.filter(name__icontains = request.POST['term'])
+                for i in products:
+                    item = i.toJSON()
+                    item['value'] = i.name
+                    data.append(item)
             else:
                 data['error'] = 'No ha ingresado a ninguna opción'
         except Exception as e:
             data['error'] = str(e)
-
-        return JsonResponse(data)   
+        return JsonResponse(data,safe=False)   
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)    
