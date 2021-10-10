@@ -11,3 +11,11 @@
 #buttonSubmitDeleteCategory{
     margin-left: 610px;
 }
+
+td.details-control {
+    background: url('../lib/datatables-1.11.2/images/details_open.png') no-repeat center center;
+    cursor: pointer;
+}
+tr.shown td.details-control {
+    background: url('../lib/datatables-1.11.2/images/details_close.png') no-repeat center center;
+}

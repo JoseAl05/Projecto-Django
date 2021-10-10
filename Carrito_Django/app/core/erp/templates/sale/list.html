@@ -1,0 +1,76 @@
+{% extends 'list.html' %} 
+{% load static %} 
+{% block head_list %}
+<link rel="stylesheet" type="text/css" href="{% static 'css/styles.css' %}" />
+<script src="{% static '/js/sale/list.js' %}"></script>
+{% endblock %} 
+{% block columns %}
+<tr>
+  <th scope="col" style="width: 0.5%;"></th>
+  <th scope="col">ID</th>
+  <th scope="col">Client</th>
+  <th scope="col">Date Joined</th>
+  <th scope="col">SubTotal</th>
+  <th scope="col">Iva Aplicated</th>
+  <th scope="col">Total</th>
+  <th scope="col">Action</th>
+</tr>
+{% endblock %}
+
+{% block rows %}
+
+
+<div class="modal fade" role="dialog" id="deleteModal"></div>
+
+{% endblock %} 
+{% block card_footer %}
+<div class="card-footer">
+    <a type="button" href="{% url 'create_sale' %}" class="btn btn-primary btn-flat">
+      <i class="fas fa-plus"></i>Add
+    </a>
+</div>
+{% endblock %}
+
+{% block javascript %}
+
+<div class="modal fade" role="dialog" id="detailModal">
+  <div class="modal-dialog modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h2 class="modal-title">Test</h2>
+        <button
+        class="close"
+        type="button"
+        data-bs-dismiss="modal"
+        aria-label="close"  
+        >
+            <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <table
+          class="table table-bordered"
+          id="detail_table"
+          style="width: 100%"
+        >
+          <thead>
+            <tr>
+              <th scope="col">Product</th>
+              <th scope="col">Category</th>
+              <th scope="col">Price</th>
+              <th scope="col">Amount</th>
+              <th scope="col">Subtotal</th>
+            </tr>
+          </thead>
+          <tbody>
+
+          </tbody>
+        </table>
+      </div>
+      <script>
+
+      </script>
+    </div>
+  </div>
+</div>
+{% endblock %}

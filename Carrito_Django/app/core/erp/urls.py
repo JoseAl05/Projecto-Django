@@ -32,7 +32,8 @@ urlpatterns = [
     path('sale/list/',SaleListView.as_view(),name='sale_list'),
     path('sale/create/',SaleCreateView.as_view(),name='create_sale'),
     # path('sale/update/<int:pk>/',ClientUpdateView.as_view(),name='update_client'),
-    # path('sale/delete/<int:pk>/',ClientDeleteView.as_view(),name='delete_client'),
+    path('sale/delete/<int:pk>/',SaleDeleteView.as_view(),name='delete_sale'),
+
 
     #Dashboard
     path('dashboard/',DashboardView.as_view(),name='dashboard'),

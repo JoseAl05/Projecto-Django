@@ -22,11 +22,13 @@
         </tbody>
       </table>
     </div>
-    <div class="card-footer">
-      <button type="button" onclick="openCreateModal('{{create_url}}')" class="btn btn-primary btn-flat">
-        <i class="fas fa-plus"></i>Add
-      </button>
-    </div>
+    {% block card_footer %}
+      <div class="card-footer">
+        <button type="button" onclick="openCreateModal('{{create_url}}')" class="btn btn-primary btn-flat">
+          <i class="fas fa-plus"></i>Add
+        </button>
+      </div>
+    {% endblock %}
   </div>  
   <div class="modal fade" role="dialog" id="createModal">
 

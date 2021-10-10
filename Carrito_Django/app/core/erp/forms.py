@@ -1,7 +1,8 @@
 from datetime import date, datetime
 from django.db.models.base import Model
+from django.forms.fields import DecimalField
 from django.forms import *
-from core.erp.models import Category, Product, Client, Sale
+from core.erp.models import Category, Product, Client, Sale,DetSale
 from tempus_dominus.widgets import DatePicker, TimePicker, DateTimePicker
 
 
@@ -148,37 +149,75 @@ class SaleForm(ModelForm):
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
 
-
+    
     class Meta:
         model = Sale
         fields = '__all__'
         widgets = {
-            'cli': Select(attrs={
-                'class': 'select2'
-            }),
-            'date_joined': DatePicker(
+            'cli': Select(
+                attrs={
+                    'class': 'form-control select2'
+                }
+            ),
+            'date_joined' : DatePicker(
                 options={
                     'maxDate': datetime.now().strftime('%Y-%m-%d'),
                     'useCurrent': True,
-                    'collapse':False,
+                    'collapse': False
                 },
                 attrs={
-                    'append': 'fa fa-calendar',
+                    'append': 'fas fa-calendar',
                     'icon_toggle': True,
                 }
             ),
             'subtotal': NumberInput(
                 attrs={
-                    'disabled' : True
+                    'class':'form-control',
+                    'disabled' : True,
+                    'autocomplete': 'off'
+                }
+            ),
+            'iva': NumberInput(
+                attrs={
+                    'class':'form-control'
                 }
             ),
             'total': NumberInput(
                 attrs={
-                    'disabled': True
+                    'class':'form-control',
+                    'disabled': True,
+                    'autocomplete': 'off'
                 }
             )
         }
         exclude = ['user_creation', 'user_updated']
+
+
+
+    # def save(self, commit=True):
+    #     data = {}
+    #     form = super()
+    #     try:
+    #         if form.is_valid():
+    #             form.save()
+    #         else:
+    #             data['error'] = form.errors
+    #     except Exception as e:
+    #         data['error'] = str(e)
+    #     return data
+
+
+class DetSaleForm(ModelForm):
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+
+    
+    class Meta:
+        model = DetSale
+        fields = '__all__'
+        exclude = ['user_creation', 'user_updated']
+
+
 
     # def save(self, commit=True):
     #     data = {}

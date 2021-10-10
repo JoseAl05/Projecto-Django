@@ -1,79 +1,113 @@
 {% extends 'home.html' %} 
-{% load widget_tweaks %} 
+{% load widget_tweaks %}
+{% load static %}
+{% block head_list %}
+  {{form.media}}
+{% endblock %}
 {% block content %}
 
-<div class="card card-default">
-  <div class="card-header">
-    <h3 class="card-title">
-      {% if action == 'add' %}
-        <i class="fas fa-plus"></i>
-      {% else %}
-        <i class="fas fa-edit"></i>
-      {% endif %} 
-      {{title}}
-    </h3>
-  </div>
-  <div class="card-body">
-    <div class="row">
-      <div class="col-lg-8">
-        <div class="card card-secondary">
-          <div class="card-header">
-            <h3 class="card-title">Details of Products</h3>
-          </div>
-          <!-- /.card-header -->
-          <div class="card-body">
-            <div class="form-group">
-              <label>Search a Product</label>
-              <div class="input-group input-group">
-                <input
-                  type="text"
-                  class="form-control"
-                  placeholder="Enter a product"
-                  name="search"
-                />
-                <span class="input-group-append">
-                  <button type="button" class="btn btn-danger btn-flat">
-                    <i class="fas fa-times"></i>
-                  </button>
-                </span>
-              </div>
+<form method="post">
+  <div class="card card-default">
+    <div class="card-header">
+      <h3 class="card-title">
+        {% if action == 'add' %}
+          <i class="fas fa-plus"></i>
+        {% else %}
+          <i class="fas fa-edit"></i>
+        {% endif %} 
+        {{title}}
+      </h3>
+    </div>
+    <div class="card-body">
+      <div class="row">
+        <div class="col-lg-8">
+          <div class="card card-secondary">
+            <div class="card-header">
+              <h3 class="card-title">Details of Products</h3>
             </div>
-            <table class="table" id="prod_table">
-              <thead>
-                <tr>
-                  <th>Action</th>
-                  <th>Product</th>
-                  <th>Category</th>
-                  <th>PVP</th>
-                  <th>Amount</th>
-                  <th>SubTotal</th>
-                </tr>
-              </thead>
-              <tbody></tbody>
-            </table>
+            <!-- /.card-header -->
+            <div class="card-body">
+              <input type="hidden" name="action" value="{{action}}" />
+              <div class="form-group">
+                <label>Search a Product</label>
+                <div class="input-group input-group">
+                  <input
+                    type="text"
+                    class="form-control"
+                    placeholder="Enter a product"
+                    name="search"
+                  />
+                  <span class="input-group-append">
+                    <button type="button" class="btn btn-danger btn-flat btnClear">
+                      <i class="fas fa-times"></i>
+                    </button>
+                  </span>
+                </div>
+              </div>
+              <button type="button" class="btn btn-danger btn-xs mb-3 btnRemoveAll">
+                <i class="fas fa-times mr-1"></i>
+                Delete all items
+              </button>
+              <table class="table" id="prod_table">
+                <thead>
+                  <tr>
+                    <th>Action</th>
+                    <th>Product</th>
+                    <th>Category</th>
+                    <th>PVP</th>
+                    <th>Amount</th>
+                    <th>SubTotal</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  
+                </tbody>
+              </table>
+            </div>
           </div>
         </div>
-      </div>
-      <div class="col-lg-4">
-        <div class="card card-secondary">
-          <div class="card-header">
-            <h3 class="card-title">Details of Bill</h3>
-          </div>
-          <div class="card-body">
-            {% for field in form.visible_fields %}
-            <div class="form-group">
-              <label>{{field.label}}:</label>
-              {{field|add_class:'form-control'|attr:'autocomplete:off'}}
-              {{form.media}}
+        <div class="col-lg-4">
+          <div class="card card-secondary">
+            <div class="card-header">
+              <h3 class="card-title">Details of Bill</h3>
             </div>
-            {% endfor %}
+            <div class="card-body">
+              <div class="form-group">
+                <label>Date Joined:</label>
+                {{form.date_joined}}
+              </div>
+              <div class="form-group">
+                <label>Client:</label>
+                {{form.cli}}
+              </div>
+              <div class="form-group">
+                <label>SubTotal:</label>
+                {{form.subtotal}}
+              </div>
+              <div class="form-group">
+                <label>IVA:</label>
+                {{form.iva}}
+              </div>
+              <div class="form-group">
+                <label>Calculated IVA:</label>
+                <input type="text" class="form-control" readonly name="iva_calculated" value="0.00" autocomplete="off"/>
+              </div>
+              <div class="form-group">
+                <label>Total:</label>
+                {{form.total}}
+              </div>
+            </div>
           </div>
         </div>
       </div>
     </div>
+    <div class="card-footer">
+      <button type="submit" class="btn btn-primary btn-flat">
+        <i class="fas fa-save"></i>Save
+      </button>
+    </div>
   </div>
-  <div class="card-footer"></div>
-</div>
+</form>
 {% endblock %} {% block javascript %}
 <script>
   $(function () {
