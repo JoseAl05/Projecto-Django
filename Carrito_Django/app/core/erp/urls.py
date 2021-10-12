@@ -31,9 +31,9 @@ urlpatterns = [
     #Sales
     path('sale/list/',SaleListView.as_view(),name='sale_list'),
     path('sale/create/',SaleCreateView.as_view(),name='create_sale'),
-    # path('sale/update/<int:pk>/',ClientUpdateView.as_view(),name='update_client'),
+    path('sale/update/<int:pk>/',SaleUpdateView.as_view(),name='update_sale'),
     path('sale/delete/<int:pk>/',SaleDeleteView.as_view(),name='delete_sale'),
-
+    path('sale/invoice/pdf/<int:pk>/',SaleInvoicePDFView.as_view(),name='pdf_sale'),
 
     #Dashboard
     path('dashboard/',DashboardView.as_view(),name='dashboard'),

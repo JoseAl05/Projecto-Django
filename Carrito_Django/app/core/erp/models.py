@@ -4,6 +4,7 @@ from datetime import datetime
 from crum import get_current_user
 from django.forms import model_to_dict
 from app.settings import MEDIA_URL,STATIC_URL
+from app.settings import TIME_ZONE
 
 from core.erp.choices import gender_choices
 
@@ -92,7 +93,7 @@ class Client(models.Model):
 
 class Sale(models.Model):
     cli = models.ForeignKey(Client, on_delete=models.CASCADE)
-    date_joined = models.DateField(default=datetime.now)
+    date_joined = models.DateField(default=datetime.now())
     subtotal = models.DecimalField(default=0.00, max_digits=9, decimal_places=2)
     iva = models.DecimalField(default=0.00, max_digits=9, decimal_places=2)
     total = models.DecimalField(default=0.00, max_digits=9, decimal_places=2)
@@ -104,6 +105,7 @@ class Sale(models.Model):
         item = model_to_dict(self)
         item['cli'] = self.cli.toJSON()
         item['det'] = [i.toJSON() for i in self.detsale_set.all()]
+        print(item)
         return item
 
     class Meta:

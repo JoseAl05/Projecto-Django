@@ -65,7 +65,7 @@ function getSaleData(){
                 "className":      'details-control',
                 "orderable":      false,
                 "data":           null,
-                "defaultContent": '<i class = "fas fa-plus-circle" style="color:green; cursor:pointer;"></ i>'
+                "defaultContent": ''
             },
             {'data':'id'},
             {'data':'cli.names'},
@@ -83,6 +83,7 @@ function getSaleData(){
                 render:function(data,type,row){
                     
                     var buttons = '<a type="button" onclick="openDeleteModal(\'/erp/sale/delete/' + row.id + '/\')" class="btn btn-danger"><i class="fas fa-trash"></i></a> ';
+                    buttons += '<a type="button" href="/erp/sale/update/' + row.id + '" class="btn btn-warning"><i class="fas fa-edit"></i></a> ';
                     buttons += '<a rel="details" type="button" class="btn btn-primary"><i class="fas fa-book"></i></a> ';
                     return buttons;
                 }
@@ -157,13 +158,11 @@ function getSaleData(){
             // This row is already open - close it
             row.child.hide();
             tr.removeClass('shown');
-            $(this).html('<i class = "fas fa-plus-circle" style="color:green; cursor:pointer;"></ i>')
         }
         else {
             // Open this row
             row.child(format(row.data())).show();
             tr.addClass('shown');
-            $(this).html('<i class = "fas fa-minus-circle" style="color:red; cursor:pointer;"></ i>')
         }
     });
 };

@@ -162,7 +162,6 @@ class SaleForm(ModelForm):
             'date_joined' : DatePicker(
                 options={
                     'maxDate': datetime.now().strftime('%Y-%m-%d'),
-                    'useCurrent': True,
                     'collapse': False
                 },
                 attrs={

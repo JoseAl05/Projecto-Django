@@ -1,8 +1,8 @@
 {% extends 'home.html' %} 
-{% load widget_tweaks %}
-{% load static %}
+{% load widget_tweaks %} 
+{% load static %} 
 {% block head_list %}
-  {{form.media}}
+{{form.media}} 
 {% endblock %}
 {% block content %}
 
@@ -11,11 +11,10 @@
     <div class="card-header">
       <h3 class="card-title">
         {% if action == 'add' %}
-          <i class="fas fa-plus"></i>
+        <i class="fas fa-plus"></i>
         {% else %}
-          <i class="fas fa-edit"></i>
-        {% endif %} 
-        {{title}}
+        <i class="fas fa-edit"></i>
+        {% endif %} {{title}}
       </h3>
     </div>
     <div class="card-body">
@@ -30,21 +29,23 @@
               <input type="hidden" name="action" value="{{action}}" />
               <div class="form-group">
                 <label>Search a Product</label>
-                <div class="input-group input-group">
-                  <input
-                    type="text"
-                    class="form-control"
-                    placeholder="Enter a product"
-                    name="search"
-                  />
-                  <span class="input-group-append">
-                    <button type="button" class="btn btn-danger btn-flat btnClear">
+                <div class="input-group">
+                  <select class="form-control select2" name="search_product">
+                  </select>
+                  <!-- <span class="input-group-append">
+                    <button
+                      type="button"
+                      class="btn btn-danger btn-flat btnClear"
+                    >
                       <i class="fas fa-times"></i>
                     </button>
-                  </span>
+                  </span> -->
                 </div>
               </div>
-              <button type="button" class="btn btn-danger btn-xs mb-3 btnRemoveAll">
+              <button
+                type="button"
+                class="btn btn-danger btn-xs mb-3 btnRemoveAll"
+              >
                 <i class="fas fa-times mr-1"></i>
                 Delete all items
               </button>
@@ -59,9 +60,7 @@
                     <th>SubTotal</th>
                   </tr>
                 </thead>
-                <tbody>
-                  
-                </tbody>
+                <tbody></tbody>
               </table>
             </div>
           </div>
@@ -90,7 +89,14 @@
               </div>
               <div class="form-group">
                 <label>Calculated IVA:</label>
-                <input type="text" class="form-control" readonly name="iva_calculated" value="0.00" autocomplete="off"/>
+                <input
+                  type="text"
+                  class="form-control"
+                  readonly
+                  name="iva_calculated"
+                  value="0.00"
+                  autocomplete="off"
+                />
               </div>
               <div class="form-group">
                 <label>Total:</label>
@@ -108,7 +114,11 @@
     </div>
   </div>
 </form>
-{% endblock %} {% block javascript %}
+<script>
+  vents.items.products = {{detail|safe}};
+</script>
+{% endblock %} 
+{% block javascript %}
 <script>
   $(function () {
     $("#data").DataTable({
