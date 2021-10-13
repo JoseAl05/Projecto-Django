@@ -361,6 +361,7 @@ function delete_sale(url,params){
     });
 }
 
+
 function submit_sale(url,params){
     //Se pregunta si se desea añadir la categoria ingresada
     Swal.fire({
@@ -383,15 +384,42 @@ function submit_sale(url,params){
                 //Si no hubo error en la peticion, se le da el mensaje al usuario de que la accion fue correcta y se redirige a la lista de catgorias
                 if(!data.hasOwnProperty('error')){
                     Swal.fire({
-                        title: 'Saved',
-                        position:'top-end',
-                        icon:'success',
-                        showConfirmButton: false,
-                        timer:1000
-                    });
-                    setTimeout(function () {
-                        location.href = "/erp/sale/list"; 
-                     }, 1000);
+                        title: 'Do yo want to print this sale?',
+                        showDenyButton: true,
+                        confirmButtonText: 'Yes',
+                        denyButtonText: `No`,
+                        confirmButtonColor: '#8fce00',
+                    }).then(function(result){
+                        if(result.isConfirmed){
+                            
+                            var a= document.createElement('a');
+                            a.target= '_blank';
+                            a.href= '/erp/sale/invoice/pdf/'+ data.id + '/';
+                            a.click();
+
+                            Swal.fire({
+                                title: 'Saved!',
+                                position:'top-end',
+                                icon:'success',
+                                showConfirmButton: false,
+                            });
+
+                            setTimeout(function () {
+                                location.href = "/erp/sale/list"; 
+                             }, 1000);
+
+                        }else if(result.isDenied){
+                            Swal.fire({
+                                title: 'Saved!',
+                                position:'top-end',
+                                icon:'success',
+                                showConfirmButton: false,
+                            });
+                            setTimeout(function () {
+                                location.href = "/erp/sale/list"; 
+                             }, 1000);
+                        }
+                    })
                     return false;
                 }
                 //Si hubo algun error al ingresar los datos se muestra la alerta con los errores
