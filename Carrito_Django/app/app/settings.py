@@ -51,6 +51,7 @@ INSTALLED_APPS = [
     'core.homepage',
     'core.login',
     'core.user',
+    'core.reports',
 ]
 
 MIDDLEWARE = [

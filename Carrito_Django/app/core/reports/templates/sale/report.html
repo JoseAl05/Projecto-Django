@@ -1,0 +1,45 @@
+{% extends 'list.html' %}
+{% load static %}
+{% block head_list %}
+<script src="{% static '/js/reports/sale/list.js' %}"></script>
+{% endblock %} 
+{% block content %}
+    <div class="card card-default">
+    <div class="card-header">
+        <h3 class="card-title">
+        <i class="fas fa-chart-bar"></i>
+        {{ title }}
+        </h3>
+    </div>
+    <div class="card-body">
+        <div class="row">
+            <div class="col-lg-4">
+                <div class="form-group">
+                    <label>Date Range:</label>
+                    {{form.date_range}}
+                </div>
+            </div>
+        </div>
+        <hr>
+        <table class="table" id="data">
+        <thead>
+            <tr>
+            <th scope="col">ID</th>
+            <th scope="col">Client</th>
+            <th scope="col">Date Joined</th>
+            <th scope="col">SubTotal</th>
+            <th scope="col">Iva Aplicated</th>
+            <th scope="col">Total</th>
+            </tr>
+        </thead>
+        <tbody></tbody>
+        </table>
+    </div>
+    {% block card_footer %} 
+    
+    {% endblock %}
+    </div>
+    <!-- <script type="application/javascript">
+        {{dt_function}}
+    </script> -->
+{% endblock %}

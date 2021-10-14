@@ -25,6 +25,7 @@ urlpatterns = [
     path('login/',include('core.login.urls')),
     path('admin/', admin.site.urls),
     path('erp/',include('core.erp.urls')),
+    path('reports/',include('core.reports.urls')),
 ]
 
 if settings.DEBUG:
