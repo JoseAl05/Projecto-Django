@@ -23,7 +23,7 @@
               />
             </div>
             <div class="info">
-              <a href="#" class="d-block">José Pablo Arancibia</a>
+              <a href="#" class="d-block">{{request.user.first_name}} {{request.user.last_name}}</a>
             </div>
           </div>
 
@@ -88,6 +88,14 @@
                   <i class="nav-icon fas fa-chart-line"></i>
                   <p>
                     Sales Reports
+                  </p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="{% url 'user_list' %}" class="nav-link">
+                  <i class="nav-icon fas fa-user-friends"></i>
+                  <p>
+                    Users
                   </p>
                 </a>
               </li>

@@ -124,7 +124,7 @@ function formatRepo(repo) {
 ///////////////Inicializar Select2 para la seleccion de clientes///////////////////
 $(function(){
 
-    $('.select2').select2({
+    $('select[name="cli"]').select2({
         theme: "bootstrap4",
         language: 'es'
     });

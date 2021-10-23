@@ -1,3 +1,5 @@
+from django.contrib.auth.mixins import LoginRequiredMixin
+from core.erp.mixins import ValidatePermissionRequiredMixin
 from core.erp.mixins import isSuperUserMixin
 from django.http.response import JsonResponse,HttpResponseRedirect
 from core.erp.models import Product
@@ -11,12 +13,14 @@ from django.urls import reverse_lazy
 
 
 #Vista basade en Clase ListView
-class ProductListView(isSuperUserMixin,ListView):
+class ProductListView(LoginRequiredMixin,ValidatePermissionRequiredMixin,ListView):
     #Se Define Modelo.
     model = Product
 
     #Se Define nombre del Template que contiene la lista.
     template_name = 'product/list.html'
+    permission_required = 'view_product'
+    url_redirect = reverse_lazy('product_list')
 
     #Excepcion del token csrf middleware
     @method_decorator(csrf_exempt)
@@ -52,11 +56,13 @@ class ProductListView(isSuperUserMixin,ListView):
         context['dt_function'] = 'getProductData()'
         return context
 
-class ProductCreateView(CreateView):
+class ProductCreateView(LoginRequiredMixin,ValidatePermissionRequiredMixin,CreateView):
     model = Product
     form_class = ProductForm
     template_name = 'product/create.html'
     success_url = reverse_lazy('product_list')
+    permission_required = 'add_product'
+    url_redirect = reverse_lazy('product_list')
 
     @method_decorator(login_required)
     def dispatch(self, request, *args, **kwargs):
@@ -85,11 +91,13 @@ class ProductCreateView(CreateView):
         context['url_create'] = '/erp/product/create/'
         return context
 
-class ProductUpdateView(UpdateView):
+class ProductUpdateView(LoginRequiredMixin,ValidatePermissionRequiredMixin,UpdateView):
     model = Product
     form_class = ProductForm
     template_name = 'product/edit.html'
     success_url = reverse_lazy('product_list')
+    permission_required = 'change_product'
+    url_redirect = reverse_lazy('product_list')
 
     @method_decorator(login_required)
     def dispatch(self, request, *args, **kwargs):
@@ -120,10 +128,12 @@ class ProductUpdateView(UpdateView):
         context['url_edit'] = '/erp/product/update/'
         return context
 
-class ProductDeleteView(DeleteView):
+class ProductDeleteView(LoginRequiredMixin,ValidatePermissionRequiredMixin,DeleteView):
     model = Product
     template_name = 'product/delete.html'
     success_url = reverse_lazy('product_list')
+    permission_required = 'delete_product'
+    url_redirect = reverse_lazy('product_list')
 
     @method_decorator(login_required)
     def dispatch(self, request, *args, **kwargs):

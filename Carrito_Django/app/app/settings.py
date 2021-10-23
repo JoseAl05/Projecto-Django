@@ -155,4 +155,15 @@ MEDIA_URL = '/media/'
 
 AUTH_USER_MODEL = 'user.User'
 
+SESSION_SERIALIZER = 'django.contrib.sessions.serializers.PickleSerializer'
+
+EMAIL_HOST = 'smtp.gmail.com'
+
+EMAIL_PORT = 587
+
+EMAIL_HOST_USER = 'djangoemailtest050298@gmail.com'
+
+EMAIL_HOST_PASSWORD = 'django321'
+
+DOMAIN = ''
 #TEMPUS_DOMINUS_LOCALIZE = 'America/Santiago'

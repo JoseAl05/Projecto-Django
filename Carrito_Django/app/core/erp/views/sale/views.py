@@ -1,6 +1,8 @@
+from django.contrib.auth.mixins import LoginRequiredMixin
 from django.http.response import HttpResponseRedirect, JsonResponse
 from django.http import HttpResponse
 from django.shortcuts import render,redirect
+from core.erp.mixins import ValidatePermissionRequiredMixin
 from app.settings import MEDIA_URL,STATIC_URL,BASE_DIR
 from core.erp.models import DetSale
 from core.erp.models import Product
@@ -20,13 +22,15 @@ from xhtml2pdf import pisa
 from django.contrib.staticfiles import finders
 
 
-class SaleListView(ListView):
+class SaleListView(LoginRequiredMixin,ValidatePermissionRequiredMixin,ListView):
 
     #Se Define Modelo.
     model = Sale
 
     #Se Define nombre del Template que contiene la lista.
     template_name = 'sale/list.html'
+    permission_required = 'view_sale'
+    url_redirect = reverse_lazy('dashboard')
 
     #Excepcion del token csrfmiddleware
     @method_decorator(csrf_exempt)
@@ -63,11 +67,13 @@ class SaleListView(ListView):
         print(context)
         return context
 
-class SaleCreateView(CreateView):
+class SaleCreateView(LoginRequiredMixin,ValidatePermissionRequiredMixin,CreateView):
     model = Sale
     form_class = SaleForm
     template_name = 'sale/create.html'
     success_url = reverse_lazy('sale_list')
+    permission_required = 'add_sale'
+    url_redirect = reverse_lazy('sale_list')
 
 
     @method_decorator(csrf_exempt)
@@ -124,11 +130,13 @@ class SaleCreateView(CreateView):
         context['detail'] = []
         return context
 
-class SaleUpdateView(UpdateView):
+class SaleUpdateView(LoginRequiredMixin,ValidatePermissionRequiredMixin,UpdateView):
     model = Sale
     form_class = SaleForm
     template_name = 'sale/create.html'
     success_url = reverse_lazy('sale_list')
+    permission_required = 'change_sale'
+    url_redirect = reverse_lazy('sale_list')
 
 
     @method_decorator(csrf_exempt)
@@ -199,10 +207,12 @@ class SaleUpdateView(UpdateView):
         context['detail'] = json.dumps(self.get_details_product())
         return context
 
-class SaleDeleteView(DeleteView):
+class SaleDeleteView(LoginRequiredMixin,ValidatePermissionRequiredMixin,DeleteView):
     model = Sale
     template_name = 'sale/delete.html'
     success_url = reverse_lazy('sale_list')
+    permission_required = 'delete_sale'
+    url_redirect = reverse_lazy('sale_list')
 
     def dispatch(self, request, *args, **kwargs):
         self.object = self.get_object()

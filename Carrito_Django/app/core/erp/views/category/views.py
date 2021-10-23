@@ -14,7 +14,8 @@ from django.urls import reverse_lazy
 #Vista basade en Clase ListView
 class CategoryListView(LoginRequiredMixin,ValidatePermissionRequiredMixin,ListView):
     
-    permission_required = ('erp.change_category','erp.delete_category')
+    permission_required = 'view_category'
+    url_redirect = reverse_lazy('dashboard')
     
     #Se Define Modelo.
     model = Category
@@ -53,9 +54,9 @@ class CategoryListView(LoginRequiredMixin,ValidatePermissionRequiredMixin,ListVi
         context['dt_function'] = 'getCategoryData()'
         return context
 
-class CategoryCreateView(ValidatePermissionRequiredMixin,CreateView):
+class CategoryCreateView(LoginRequiredMixin,ValidatePermissionRequiredMixin,CreateView):
 
-    permission_required = 'erp.view_category'
+    permission_required = 'add_category'
     url_redirect = reverse_lazy('category_list')
 
     model = Category
@@ -90,11 +91,13 @@ class CategoryCreateView(ValidatePermissionRequiredMixin,CreateView):
         context['url_create'] = '/erp/category/create/'
         return context
 
-class CategoryUpdateView(UpdateView):
+class CategoryUpdateView(LoginRequiredMixin,ValidatePermissionRequiredMixin,UpdateView):
     model = Category
     form_class = CategoryForm
     template_name = 'category/edit.html'
     success_url = reverse_lazy('category_list')
+    permission_required = 'change_category'
+    url_redirect = reverse_lazy('category_list')
 
     @method_decorator(login_required)
     def dispatch(self, request, *args, **kwargs):
@@ -125,10 +128,12 @@ class CategoryUpdateView(UpdateView):
         context['url_edit'] = '/erp/category/update/'
         return context
 
-class CategoryDeleteView(DeleteView):
+class CategoryDeleteView(LoginRequiredMixin,ValidatePermissionRequiredMixin,DeleteView):
     model = Category
     template_name = 'category/delete.html'
     success_url = reverse_lazy('category_list')
+    permission_required = 'delete_category'
+    url_redirect = reverse_lazy('category_list')
 
     @method_decorator(login_required)
     def dispatch(self, request, *args, **kwargs):

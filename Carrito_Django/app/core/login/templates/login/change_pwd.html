@@ -1,0 +1,52 @@
+{% extends 'login/base.html' %}
+{% load static %}
+{% block head %}
+<script src="{% static '/js/user/functions.js' %}"></script>
+{% endblock %}
+{% block content %}
+<div class="login-box">
+  <div class="login-logo">
+    <a href="{% url 'index' %}"><b>Django</b>Project</a>
+  </div>
+  <div class="card">
+    <div class="card-body login-card-body">
+      <p class="login-box-msg">Change Password</p>
+
+      <form action="{% url 'change_pwd' user_token %}" method="post">
+        {% csrf_token %}
+        <input type="hidden" name="next" value="{{next}}" />
+        <div class="input-group mb-3">
+          {{form.password}}
+          <div class="input-group-append">
+            <div class="input-group-text">
+              <span class="fas fa-lock"></span>
+            </div>
+          </div>
+        </div>
+        <div class="input-group mb-3">
+          {{form.confirm_password}}
+          <div class="input-group-append">
+            <div class="input-group-text">
+              <span class="fas fa-lock"></span>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-12">
+            <button type="submit" class="btn btn-primary btn-block">
+              <i class="fas fa-lock mr-2"></i>Change Password
+            </button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+  <script type="application/javascript">
+    $('form').on('submit',function(e){
+        e.preventDefault()
+        var params = new FormData(this);
+        change_password_user('{% url 'change_pwd' user_token %}',params)
+    });
+  </script>
+</div>
+{% endblock %}

@@ -9,12 +9,12 @@ from django.views.generic import TemplateView
 
 
 class TestView(TemplateView):
-    template_name = 'test.html'
+    template_name = 'email.html'
 
 
  #Excepcion del token csrfmiddleware
     @method_decorator(csrf_exempt)
-    @method_decorator(login_required)
+    # @method_decorator(login_required)
     def dispatch(self, request, *args, **kwargs):
         return super().dispatch(request, *args, **kwargs)
 

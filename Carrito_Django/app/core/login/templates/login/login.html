@@ -1,0 +1,75 @@
+{% extends 'login/base.html' %}
+{% load widget_tweaks %}
+{% block content %}
+    <div class="login-box">
+    <div class="login-logo">
+        <a href="{% url 'index' %}"><b>Django</b>Project</a>
+    </div>
+    <div class="card">
+        <div class="card-body login-card-body">
+        <p class="login-box-msg">Sign in</p>
+
+        <form action="{% url 'login' %}" method="post">
+            {% csrf_token %}
+            <input type="hidden" name="next" value="{{next}}" />
+            <div class="input-group mb-3">
+            {{form.username | add_class:'form-control' | attr:'autocomplete:off' |attr:'placeholder: Enter your username'}}
+            <div class="input-group-append">
+                <div class="input-group-text">
+                <span class="fas fa-user"></span>
+                </div>
+            </div>
+            </div>
+            <div class="input-group mb-3">
+            {{form.password | add_class:'form-control' | attr:'placeholder: Enter your password'}}
+            <div class="input-group-append">
+                <div class="input-group-text">
+                <span class="fas fa-lock"></span>
+                </div>
+            </div>
+            </div>
+            <div class="row">
+            <div class="col-8">
+                <div class="icheck-primary">
+                <input type="checkbox" id="remember" />
+                <label for="remember"> Remember Me </label>
+                </div>
+            </div>
+            <div class="col-4">
+                <button type="submit" class="btn btn-primary btn-block">
+                <i class="fas fa-sign-in-alt mr-2"></i>Sign In
+                </button>
+            </div>
+            </div>
+        </form>
+
+        <p class="mb-1">
+            <a href="{% url 'reset_pwd' %}">I forgot my password</a>
+        </p>
+        <!-- <p class="mb-0">
+            <a href="register.html" class="text-center"
+            >Register a new membership</a
+            >
+        </p> -->
+        </div>
+    </div>
+    <script type="application/javascript">
+        {% if form.errors %}
+            var errors = '';
+            {% for field in form %}
+                {% for error in field.errors %}
+                    errors += '{{error}}\n'
+                {% endfor %}
+            {% endfor %}
+            {% for error in form.non_field_errors %}
+                errors += '{{error}}\n'
+            {% endfor %}
+            Swal.fire({
+                icon: 'error',
+                title: 'Error',
+                text: errors,
+            });
+        {% endif %}
+    </script>
+    </div>
+{% endblock %}

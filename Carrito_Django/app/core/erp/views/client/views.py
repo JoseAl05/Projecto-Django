@@ -1,3 +1,5 @@
+from django.contrib.auth.mixins import LoginRequiredMixin
+from core.erp.mixins import ValidatePermissionRequiredMixin
 from core.erp.mixins import isSuperUserMixin
 from django.http.response import JsonResponse
 from django.shortcuts import render,redirect
@@ -9,7 +11,7 @@ from django.contrib.auth.decorators import login_required
 from django.views.decorators.csrf import csrf_exempt 
 from django.urls import reverse_lazy
 
-class ClientListView(isSuperUserMixin,ListView):
+class ClientListView(LoginRequiredMixin,ValidatePermissionRequiredMixin,ListView):
 
 
     #Se Define Modelo.
@@ -17,6 +19,9 @@ class ClientListView(isSuperUserMixin,ListView):
 
     #Se Define nombre del Template que contiene la lista.
     template_name = 'client/list.html'
+
+    permission_required = 'view_client'
+    url_redirect = reverse_lazy('dashboard')
 
     #Excepcion del token csrfmiddleware
     @method_decorator(csrf_exempt)
@@ -51,11 +56,13 @@ class ClientListView(isSuperUserMixin,ListView):
         print(context)
         return context
 
-class ClientCreateView(CreateView):
+class ClientCreateView(LoginRequiredMixin,ValidatePermissionRequiredMixin,CreateView):
     model = Client
     form_class = ClientForm
     template_name = 'client/create.html'
     success_url = reverse_lazy('client_list')
+    permission_required = 'add_client'
+    url_redirect = reverse_lazy('client_list')
 
     @method_decorator(login_required)
     def dispatch(self, request, *args, **kwargs):
@@ -84,11 +91,13 @@ class ClientCreateView(CreateView):
         context['url_create'] = '/erp/client/create/'
         return context
 
-class ClientUpdateView(UpdateView):
+class ClientUpdateView(LoginRequiredMixin,ValidatePermissionRequiredMixin,UpdateView):
     model = Client
     form_class = ClientForm
     template_name = 'client/edit.html'
     success_url = reverse_lazy('client_list')
+    permission_required = 'change_client'
+    url_redirect = reverse_lazy('client_list')
 
     @method_decorator(login_required)
     def dispatch(self, request, *args, **kwargs):
@@ -119,10 +128,12 @@ class ClientUpdateView(UpdateView):
         context['url_edit'] = '/erp/client/update/'
         return context
 
-class ClientDeleteView(DeleteView):
+class ClientDeleteView(LoginRequiredMixin,ValidatePermissionRequiredMixin,DeleteView):
     model = Client
     template_name = 'client/delete.html'
     success_url = reverse_lazy('client_list')
+    permission_required = 'delete_client'
+    url_redirect = reverse_lazy('client_list')
 
     @method_decorator(login_required)
     def dispatch(self, request, *args, **kwargs):
