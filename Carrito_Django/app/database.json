@@ -1,0 +1,1922 @@
+[
+{
+  "model": "admin.logentry",
+  "pk": 1,
+  "fields": {
+    "action_time": "2021-09-27T07:03:48.338Z",
+    "user": 1,
+    "content_type": 11,
+    "object_id": "1",
+    "object_repr": "deser",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"Image\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 2,
+  "fields": {
+    "action_time": "2021-09-29T06:49:25.175Z",
+    "user": 1,
+    "content_type": 11,
+    "object_id": "1",
+    "object_repr": "deser",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"User permissions\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 3,
+  "fields": {
+    "action_time": "2021-09-29T06:49:33.457Z",
+    "user": 1,
+    "content_type": 11,
+    "object_id": "1",
+    "object_repr": "deser",
+    "action_flag": 2,
+    "change_message": "[]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 4,
+  "fields": {
+    "action_time": "2021-09-29T06:54:15.401Z",
+    "user": 2,
+    "content_type": 11,
+    "object_id": "1",
+    "object_repr": "deser",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"User permissions\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 5,
+  "fields": {
+    "action_time": "2021-10-17T01:01:07.379Z",
+    "user": 9,
+    "content_type": 3,
+    "object_id": "1",
+    "object_repr": "Administrador",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 6,
+  "fields": {
+    "action_time": "2021-10-17T01:01:45.915Z",
+    "user": 9,
+    "content_type": 3,
+    "object_id": "2",
+    "object_repr": "Gestor",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 7,
+  "fields": {
+    "action_time": "2021-10-19T03:54:37.493Z",
+    "user": 9,
+    "content_type": 3,
+    "object_id": "1",
+    "object_repr": "Administrador",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"Permissions\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 8,
+  "fields": {
+    "action_time": "2021-10-19T04:24:34.371Z",
+    "user": 2,
+    "content_type": 3,
+    "object_id": "1",
+    "object_repr": "Administrador",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"Permissions\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 9,
+  "fields": {
+    "action_time": "2021-10-19T04:29:49.771Z",
+    "user": 2,
+    "content_type": 3,
+    "object_id": "1",
+    "object_repr": "Administrador",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"Permissions\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 10,
+  "fields": {
+    "action_time": "2021-10-19T04:30:51.624Z",
+    "user": 2,
+    "content_type": 3,
+    "object_id": "1",
+    "object_repr": "Administrador",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"Permissions\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 11,
+  "fields": {
+    "action_time": "2021-10-19T04:31:27.647Z",
+    "user": 2,
+    "content_type": 3,
+    "object_id": "2",
+    "object_repr": "Gestor",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"Permissions\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 12,
+  "fields": {
+    "action_time": "2021-10-19T04:31:36.353Z",
+    "user": 2,
+    "content_type": 3,
+    "object_id": "3",
+    "object_repr": "Gestor de Venta",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 13,
+  "fields": {
+    "action_time": "2021-10-19T04:31:46.275Z",
+    "user": 2,
+    "content_type": 3,
+    "object_id": "2",
+    "object_repr": "Gestor de Inventario",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"Name\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 14,
+  "fields": {
+    "action_time": "2021-10-19T04:32:11.203Z",
+    "user": 2,
+    "content_type": 3,
+    "object_id": "3",
+    "object_repr": "Gestor de Venta",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"Permissions\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 15,
+  "fields": {
+    "action_time": "2021-10-19T04:32:25.250Z",
+    "user": 2,
+    "content_type": 3,
+    "object_id": "2",
+    "object_repr": "Gestor de Inventario",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"Permissions\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 16,
+  "fields": {
+    "action_time": "2021-10-25T16:38:33.939Z",
+    "user": 2,
+    "content_type": 11,
+    "object_id": "2",
+    "object_repr": "daser",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"Image\"]}}]"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 1,
+  "fields": {
+    "name": "Can add log entry",
+    "content_type": 1,
+    "codename": "add_logentry"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 2,
+  "fields": {
+    "name": "Can change log entry",
+    "content_type": 1,
+    "codename": "change_logentry"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 3,
+  "fields": {
+    "name": "Can delete log entry",
+    "content_type": 1,
+    "codename": "delete_logentry"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 4,
+  "fields": {
+    "name": "Can view log entry",
+    "content_type": 1,
+    "codename": "view_logentry"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 5,
+  "fields": {
+    "name": "Can add permission",
+    "content_type": 2,
+    "codename": "add_permission"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 6,
+  "fields": {
+    "name": "Can change permission",
+    "content_type": 2,
+    "codename": "change_permission"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 7,
+  "fields": {
+    "name": "Can delete permission",
+    "content_type": 2,
+    "codename": "delete_permission"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 8,
+  "fields": {
+    "name": "Can view permission",
+    "content_type": 2,
+    "codename": "view_permission"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 9,
+  "fields": {
+    "name": "Can add group",
+    "content_type": 3,
+    "codename": "add_group"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 10,
+  "fields": {
+    "name": "Can change group",
+    "content_type": 3,
+    "codename": "change_group"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 11,
+  "fields": {
+    "name": "Can delete group",
+    "content_type": 3,
+    "codename": "delete_group"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 12,
+  "fields": {
+    "name": "Can view group",
+    "content_type": 3,
+    "codename": "view_group"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 13,
+  "fields": {
+    "name": "Can add content type",
+    "content_type": 4,
+    "codename": "add_contenttype"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 14,
+  "fields": {
+    "name": "Can change content type",
+    "content_type": 4,
+    "codename": "change_contenttype"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 15,
+  "fields": {
+    "name": "Can delete content type",
+    "content_type": 4,
+    "codename": "delete_contenttype"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 16,
+  "fields": {
+    "name": "Can view content type",
+    "content_type": 4,
+    "codename": "view_contenttype"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 17,
+  "fields": {
+    "name": "Can add session",
+    "content_type": 5,
+    "codename": "add_session"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 18,
+  "fields": {
+    "name": "Can change session",
+    "content_type": 5,
+    "codename": "change_session"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 19,
+  "fields": {
+    "name": "Can delete session",
+    "content_type": 5,
+    "codename": "delete_session"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 20,
+  "fields": {
+    "name": "Can view session",
+    "content_type": 5,
+    "codename": "view_session"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 21,
+  "fields": {
+    "name": "Can add Categoria",
+    "content_type": 6,
+    "codename": "add_category"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 22,
+  "fields": {
+    "name": "Can change Categoria",
+    "content_type": 6,
+    "codename": "change_category"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 23,
+  "fields": {
+    "name": "Can delete Categoria",
+    "content_type": 6,
+    "codename": "delete_category"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 24,
+  "fields": {
+    "name": "Can view Categoria",
+    "content_type": 6,
+    "codename": "view_category"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 25,
+  "fields": {
+    "name": "Can add Cliente",
+    "content_type": 7,
+    "codename": "add_client"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 26,
+  "fields": {
+    "name": "Can change Cliente",
+    "content_type": 7,
+    "codename": "change_client"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 27,
+  "fields": {
+    "name": "Can delete Cliente",
+    "content_type": 7,
+    "codename": "delete_client"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 28,
+  "fields": {
+    "name": "Can view Cliente",
+    "content_type": 7,
+    "codename": "view_client"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 29,
+  "fields": {
+    "name": "Can add Venta",
+    "content_type": 8,
+    "codename": "add_sale"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 30,
+  "fields": {
+    "name": "Can change Venta",
+    "content_type": 8,
+    "codename": "change_sale"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 31,
+  "fields": {
+    "name": "Can delete Venta",
+    "content_type": 8,
+    "codename": "delete_sale"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 32,
+  "fields": {
+    "name": "Can view Venta",
+    "content_type": 8,
+    "codename": "view_sale"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 33,
+  "fields": {
+    "name": "Can add Producto",
+    "content_type": 9,
+    "codename": "add_product"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 34,
+  "fields": {
+    "name": "Can change Producto",
+    "content_type": 9,
+    "codename": "change_product"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 35,
+  "fields": {
+    "name": "Can delete Producto",
+    "content_type": 9,
+    "codename": "delete_product"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 36,
+  "fields": {
+    "name": "Can view Producto",
+    "content_type": 9,
+    "codename": "view_product"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 37,
+  "fields": {
+    "name": "Can add Detalle de Venta",
+    "content_type": 10,
+    "codename": "add_detsale"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 38,
+  "fields": {
+    "name": "Can change Detalle de Venta",
+    "content_type": 10,
+    "codename": "change_detsale"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 39,
+  "fields": {
+    "name": "Can delete Detalle de Venta",
+    "content_type": 10,
+    "codename": "delete_detsale"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 40,
+  "fields": {
+    "name": "Can view Detalle de Venta",
+    "content_type": 10,
+    "codename": "view_detsale"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 41,
+  "fields": {
+    "name": "Can add user",
+    "content_type": 11,
+    "codename": "add_user"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 42,
+  "fields": {
+    "name": "Can change user",
+    "content_type": 11,
+    "codename": "change_user"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 43,
+  "fields": {
+    "name": "Can delete user",
+    "content_type": 11,
+    "codename": "delete_user"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 44,
+  "fields": {
+    "name": "Can view user",
+    "content_type": 11,
+    "codename": "view_user"
+  }
+},
+{
+  "model": "auth.group",
+  "pk": 1,
+  "fields": {
+    "name": "Administrador",
+    "permissions": [
+      1,
+      2,
+      3,
+      4,
+      9,
+      10,
+      11,
+      12,
+      5,
+      6,
+      7,
+      8,
+      13,
+      14,
+      15,
+      16,
+      21,
+      22,
+      23,
+      24,
+      25,
+      26,
+      27,
+      28,
+      37,
+      38,
+      39,
+      40,
+      33,
+      34,
+      35,
+      36,
+      29,
+      30,
+      31,
+      32,
+      17,
+      18,
+      19,
+      20,
+      41,
+      42,
+      43,
+      44
+    ]
+  }
+},
+{
+  "model": "auth.group",
+  "pk": 2,
+  "fields": {
+    "name": "Gestor de Inventario",
+    "permissions": [
+      21,
+      22,
+      23,
+      24,
+      25,
+      26,
+      27,
+      28,
+      40,
+      33,
+      34,
+      35,
+      36,
+      32
+    ]
+  }
+},
+{
+  "model": "auth.group",
+  "pk": 3,
+  "fields": {
+    "name": "Gestor de Venta",
+    "permissions": [
+      24,
+      28,
+      37,
+      38,
+      39,
+      40,
+      36,
+      29,
+      30,
+      31,
+      32
+    ]
+  }
+},
+{
+  "model": "contenttypes.contenttype",
+  "pk": 1,
+  "fields": {
+    "app_label": "admin",
+    "model": "logentry"
+  }
+},
+{
+  "model": "contenttypes.contenttype",
+  "pk": 2,
+  "fields": {
+    "app_label": "auth",
+    "model": "permission"
+  }
+},
+{
+  "model": "contenttypes.contenttype",
+  "pk": 3,
+  "fields": {
+    "app_label": "auth",
+    "model": "group"
+  }
+},
+{
+  "model": "contenttypes.contenttype",
+  "pk": 4,
+  "fields": {
+    "app_label": "contenttypes",
+    "model": "contenttype"
+  }
+},
+{
+  "model": "contenttypes.contenttype",
+  "pk": 5,
+  "fields": {
+    "app_label": "sessions",
+    "model": "session"
+  }
+},
+{
+  "model": "contenttypes.contenttype",
+  "pk": 6,
+  "fields": {
+    "app_label": "erp",
+    "model": "category"
+  }
+},
+{
+  "model": "contenttypes.contenttype",
+  "pk": 7,
+  "fields": {
+    "app_label": "erp",
+    "model": "client"
+  }
+},
+{
+  "model": "contenttypes.contenttype",
+  "pk": 8,
+  "fields": {
+    "app_label": "erp",
+    "model": "sale"
+  }
+},
+{
+  "model": "contenttypes.contenttype",
+  "pk": 9,
+  "fields": {
+    "app_label": "erp",
+    "model": "product"
+  }
+},
+{
+  "model": "contenttypes.contenttype",
+  "pk": 10,
+  "fields": {
+    "app_label": "erp",
+    "model": "detsale"
+  }
+},
+{
+  "model": "contenttypes.contenttype",
+  "pk": 11,
+  "fields": {
+    "app_label": "user",
+    "model": "user"
+  }
+},
+{
+  "model": "sessions.session",
+  "pk": "0et8k0p330wyv7c4wpf8gfuau0ud0myg",
+  "fields": {
+    "session_data": ".eJxVjDsOwjAQBe_iGln-fyjpOYO1Xq9xADlSnFSIu0OkFNC-mXkvlmBbW9oGLWkq7MwUO_1uGfBBfQflDv02c5z7ukyZ7wo_6ODXudDzcrh_Bw1G-9a6OFVKBlOrs0YHJ6rwIluDMoqMFaOkGlFZXaNADFqTyuCNpOCNt8TeH--lOAg:1mVLKg:7rHD2Bvh1AAjBuIT528sO3YxEb6ZyRZp477BoyHsd4I",
+    "expire_date": "2021-10-12T22:12:14.463Z"
+  }
+},
+{
+  "model": "sessions.session",
+  "pk": "er8r6kjw3pq7zz3dp28ag0n62p3wk7ap",
+  "fields": {
+    "session_data": ".eJxNkM1OwzAQhGnVAkIUJCTegV4s4rRNegMuHBAXeIBo_ZPGNHWqOOaGVA4gIe2ty_vipEWqb-OZ8X7ezfB30zvqzgfd4CgD3xSZd7rOjCLsccKrgzsBcqltMMbqDeyiYrKyTW0EayNs7zr2XCldPvxnLw8eKMAVhHeRnPJbnQiIVQJJFOX5dBZLnsAEklhEOp3nUqiYT_KUtyLVKQcVR0FLMZ_MCIeLuvJrwus9iBJs1U51gcJpwotOZd6ujVyWmraEgxYjNB-75jd90Qu1nz7OXAONpuIUzzry105uafy580EpYxf0g30lCE-UzsGXDeF5bnSpXCZBFjpEvcB-2NpTDwcWVgFidK9WxhrX1KCqut3EjjZ717UzlQ0wMeMsCU3P_gBtYZLp:1mgWsk:d9kvrqSYNCp2Ievlgx7EStEvCjAEBN7PSxd67hYw5tI",
+    "expire_date": "2021-11-12T18:45:38.080Z"
+  }
+},
+{
+  "model": "sessions.session",
+  "pk": "s8v9o6f96nz82q2jnsn4h315g87iujfq",
+  "fields": {
+    "session_data": ".eJxVjEEOwiAUBe_C2hD6Syl06d4zEOBDqRowUFbGu1uSLnT7Zt68iTZtj7pVX_SGZCGKXH43a9zDpw7wbtKaqctpL5ulXaEnrfSW0T-vp_sXiKbG_uYQppFLjwCjFAyknSQMDGaw6MApOStUSuDI0SBTDq31AkRADIfljuhacnuRZfh8AQl5OuY:1mcT3N:-5pwxHHr8WDwAznFJg4DYeJRxTpwhqUuUaWWi_wVQro",
+    "expire_date": "2021-11-01T13:51:49.314Z"
+  }
+},
+{
+  "model": "erp.category",
+  "pk": 5,
+  "fields": {
+    "user_creation": 3,
+    "date_creation": "2021-10-05T14:23:08.446Z",
+    "date_updated": "2021-10-05T14:23:08.446Z",
+    "user_updated": null,
+    "name": "Frutas",
+    "desc": null
+  }
+},
+{
+  "model": "erp.category",
+  "pk": 6,
+  "fields": {
+    "user_creation": 3,
+    "date_creation": "2021-10-05T14:23:14.563Z",
+    "date_updated": "2021-10-05T14:23:14.563Z",
+    "user_updated": null,
+    "name": "Verduras",
+    "desc": null
+  }
+},
+{
+  "model": "erp.category",
+  "pk": 7,
+  "fields": {
+    "user_creation": 3,
+    "date_creation": "2021-10-05T14:23:20.046Z",
+    "date_updated": "2021-10-05T14:23:20.046Z",
+    "user_updated": null,
+    "name": "Bebidas",
+    "desc": null
+  }
+},
+{
+  "model": "erp.category",
+  "pk": 8,
+  "fields": {
+    "user_creation": 3,
+    "date_creation": "2021-10-05T14:23:25.378Z",
+    "date_updated": "2021-10-05T14:23:25.378Z",
+    "user_updated": null,
+    "name": "Lacteos",
+    "desc": null
+  }
+},
+{
+  "model": "erp.category",
+  "pk": 9,
+  "fields": {
+    "user_creation": 3,
+    "date_creation": "2021-10-05T14:23:30.738Z",
+    "date_updated": "2021-10-05T14:23:30.738Z",
+    "user_updated": null,
+    "name": "Carnes",
+    "desc": null
+  }
+},
+{
+  "model": "erp.category",
+  "pk": 10,
+  "fields": {
+    "user_creation": 3,
+    "date_creation": "2021-10-05T14:23:35.925Z",
+    "date_updated": "2021-10-05T14:23:35.925Z",
+    "user_updated": null,
+    "name": "Proteinas",
+    "desc": null
+  }
+},
+{
+  "model": "erp.category",
+  "pk": 11,
+  "fields": {
+    "user_creation": 3,
+    "date_creation": "2021-10-05T14:23:42.113Z",
+    "date_updated": "2021-10-05T14:23:42.113Z",
+    "user_updated": null,
+    "name": "Carbohidratos",
+    "desc": null
+  }
+},
+{
+  "model": "erp.product",
+  "pk": 4,
+  "fields": {
+    "name": "Coca Cola",
+    "cat": 7,
+    "image": "product/2021/10/11/coca_cola.png",
+    "stock": 5,
+    "pvp": "1390.00"
+  }
+},
+{
+  "model": "erp.product",
+  "pk": 5,
+  "fields": {
+    "name": "Carne molida",
+    "cat": 9,
+    "image": "product/2021/10/11/carne_molida.png",
+    "stock": 1,
+    "pvp": "1500.00"
+  }
+},
+{
+  "model": "erp.product",
+  "pk": 6,
+  "fields": {
+    "name": "Papas",
+    "cat": 6,
+    "image": "product/2021/10/11/papas.png",
+    "stock": 0,
+    "pvp": "450.00"
+  }
+},
+{
+  "model": "erp.product",
+  "pk": 7,
+  "fields": {
+    "name": "Manzana",
+    "cat": 5,
+    "image": "product/2021/10/11/manzana.png",
+    "stock": 10,
+    "pvp": "300.00"
+  }
+},
+{
+  "model": "erp.product",
+  "pk": 8,
+  "fields": {
+    "name": "Lechuga",
+    "cat": 6,
+    "image": "product/2021/10/11/lechuga.png",
+    "stock": 0,
+    "pvp": "600.00"
+  }
+},
+{
+  "model": "erp.product",
+  "pk": 9,
+  "fields": {
+    "name": "Leche con Chocolate",
+    "cat": 8,
+    "image": "product/2021/10/11/leche_con_chocolate.png",
+    "stock": 0,
+    "pvp": "700.00"
+  }
+},
+{
+  "model": "erp.product",
+  "pk": 10,
+  "fields": {
+    "name": "Arroz",
+    "cat": 11,
+    "image": "product/2021/10/11/arroz.png",
+    "stock": 0,
+    "pvp": "890.00"
+  }
+},
+{
+  "model": "erp.product",
+  "pk": 11,
+  "fields": {
+    "name": "Fideos",
+    "cat": 11,
+    "image": "product/2021/10/11/fideos.jpg",
+    "stock": 5,
+    "pvp": "1560.00"
+  }
+},
+{
+  "model": "erp.client",
+  "pk": 4,
+  "fields": {
+    "names": "JosÚ Pablo",
+    "surnames": "Arancibia Linker",
+    "dni": "19728422-6",
+    "birthday": "2021-09-28",
+    "address": "ASDASDASDasd",
+    "gender": "male"
+  }
+},
+{
+  "model": "erp.client",
+  "pk": 5,
+  "fields": {
+    "names": "Susana",
+    "surnames": "Linker Urria",
+    "dni": "8640683-7",
+    "birthday": "2021-09-28",
+    "address": "asdasdasdasd",
+    "gender": "female"
+  }
+},
+{
+  "model": "erp.client",
+  "pk": 6,
+  "fields": {
+    "names": "Some",
+    "surnames": "Dude",
+    "dni": "12345678-9",
+    "birthday": "2021-10-10",
+    "address": "Some Address",
+    "gender": "male"
+  }
+},
+{
+  "model": "erp.client",
+  "pk": 7,
+  "fields": {
+    "names": "Fernando",
+    "surnames": "Arancibia",
+    "dni": "98765432-1",
+    "birthday": "2021-10-25",
+    "address": "Prueba",
+    "gender": "male"
+  }
+},
+{
+  "model": "erp.client",
+  "pk": 8,
+  "fields": {
+    "names": "Cliente #1",
+    "surnames": "Cliente",
+    "dni": "1234546789",
+    "birthday": "2021-10-29",
+    "address": "Cliente Address",
+    "gender": "female"
+  }
+},
+{
+  "model": "erp.client",
+  "pk": 9,
+  "fields": {
+    "names": "a",
+    "surnames": "a",
+    "dni": "1235141312",
+    "birthday": "2021-10-29",
+    "address": "a",
+    "gender": "male"
+  }
+},
+{
+  "model": "erp.client",
+  "pk": 10,
+  "fields": {
+    "names": "b",
+    "surnames": "b",
+    "dni": "1235612413",
+    "birthday": "2021-10-29",
+    "address": "b",
+    "gender": "male"
+  }
+},
+{
+  "model": "erp.client",
+  "pk": 11,
+  "fields": {
+    "names": "c",
+    "surnames": "c",
+    "dni": "1231251412",
+    "birthday": "2021-10-29",
+    "address": "c",
+    "gender": "male"
+  }
+},
+{
+  "model": "erp.client",
+  "pk": 12,
+  "fields": {
+    "names": "x",
+    "surnames": "x",
+    "dni": "1236486243",
+    "birthday": "2021-10-29",
+    "address": "x",
+    "gender": "male"
+  }
+},
+{
+  "model": "erp.client",
+  "pk": 13,
+  "fields": {
+    "names": "n",
+    "surnames": "n",
+    "dni": "9876381283",
+    "birthday": "2021-10-29",
+    "address": "n",
+    "gender": "male"
+  }
+},
+{
+  "model": "erp.client",
+  "pk": 14,
+  "fields": {
+    "names": "m",
+    "surnames": "m",
+    "dni": "1266531241",
+    "birthday": "2021-10-29",
+    "address": "m",
+    "gender": "male"
+  }
+},
+{
+  "model": "erp.client",
+  "pk": 15,
+  "fields": {
+    "names": "t",
+    "surnames": "t",
+    "dni": "1235124512",
+    "birthday": "2021-10-29",
+    "address": "t",
+    "gender": "male"
+  }
+},
+{
+  "model": "erp.client",
+  "pk": 16,
+  "fields": {
+    "names": "Client #2",
+    "surnames": "cli",
+    "dni": "8783627613",
+    "birthday": "1998-02-05",
+    "address": "a",
+    "gender": "male"
+  }
+},
+{
+  "model": "erp.client",
+  "pk": 17,
+  "fields": {
+    "names": "Client #3",
+    "surnames": "asd",
+    "dni": "1283174818",
+    "birthday": "2021-10-29",
+    "address": "asdas",
+    "gender": "male"
+  }
+},
+{
+  "model": "erp.client",
+  "pk": 18,
+  "fields": {
+    "names": "Client #4",
+    "surnames": "lkasd",
+    "dni": "4847282817",
+    "birthday": "2021-10-29",
+    "address": "asdasd",
+    "gender": "male"
+  }
+},
+{
+  "model": "erp.sale",
+  "pk": 3,
+  "fields": {
+    "cli": 4,
+    "date_joined": "2021-10-08",
+    "subtotal": "2400.00",
+    "iva": "456.00",
+    "total": "2856.00"
+  }
+},
+{
+  "model": "erp.sale",
+  "pk": 4,
+  "fields": {
+    "cli": 5,
+    "date_joined": "2021-10-10",
+    "subtotal": "3680.00",
+    "iva": "699.20",
+    "total": "4379.20"
+  }
+},
+{
+  "model": "erp.sale",
+  "pk": 5,
+  "fields": {
+    "cli": 4,
+    "date_joined": "2021-10-09",
+    "subtotal": "8560.00",
+    "iva": "1626.40",
+    "total": "10186.40"
+  }
+},
+{
+  "model": "erp.sale",
+  "pk": 6,
+  "fields": {
+    "cli": 5,
+    "date_joined": "2021-10-09",
+    "subtotal": "2200.00",
+    "iva": "418.00",
+    "total": "2618.00"
+  }
+},
+{
+  "model": "erp.sale",
+  "pk": 7,
+  "fields": {
+    "cli": 5,
+    "date_joined": "2021-10-10",
+    "subtotal": "5750.00",
+    "iva": "1092.50",
+    "total": "6842.50"
+  }
+},
+{
+  "model": "erp.sale",
+  "pk": 8,
+  "fields": {
+    "cli": 6,
+    "date_joined": "2021-10-05",
+    "subtotal": "5780.00",
+    "iva": "1098.20",
+    "total": "6878.20"
+  }
+},
+{
+  "model": "erp.sale",
+  "pk": 9,
+  "fields": {
+    "cli": 4,
+    "date_joined": "2021-10-11",
+    "subtotal": "2400.00",
+    "iva": "456.00",
+    "total": "2856.00"
+  }
+},
+{
+  "model": "erp.sale",
+  "pk": 10,
+  "fields": {
+    "cli": 5,
+    "date_joined": "2021-10-12",
+    "subtotal": "3060.00",
+    "iva": "581.40",
+    "total": "3641.40"
+  }
+},
+{
+  "model": "erp.sale",
+  "pk": 11,
+  "fields": {
+    "cli": 4,
+    "date_joined": "2021-10-12",
+    "subtotal": "1390.00",
+    "iva": "264.10",
+    "total": "1654.10"
+  }
+},
+{
+  "model": "erp.sale",
+  "pk": 12,
+  "fields": {
+    "cli": 4,
+    "date_joined": "2021-10-12",
+    "subtotal": "1560.00",
+    "iva": "296.40",
+    "total": "1856.40"
+  }
+},
+{
+  "model": "erp.sale",
+  "pk": 13,
+  "fields": {
+    "cli": 4,
+    "date_joined": "2021-09-15",
+    "subtotal": "14340.00",
+    "iva": "2724.60",
+    "total": "17064.60"
+  }
+},
+{
+  "model": "erp.sale",
+  "pk": 14,
+  "fields": {
+    "cli": 4,
+    "date_joined": "2021-05-25",
+    "subtotal": "13750.00",
+    "iva": "2612.50",
+    "total": "16362.50"
+  }
+},
+{
+  "model": "erp.sale",
+  "pk": 15,
+  "fields": {
+    "cli": 4,
+    "date_joined": "2021-10-12",
+    "subtotal": "9000.00",
+    "iva": "1710.00",
+    "total": "10710.00"
+  }
+},
+{
+  "model": "erp.sale",
+  "pk": 16,
+  "fields": {
+    "cli": 4,
+    "date_joined": "2021-10-17",
+    "subtotal": "14750.00",
+    "iva": "2802.50",
+    "total": "17552.50"
+  }
+},
+{
+  "model": "erp.sale",
+  "pk": 17,
+  "fields": {
+    "cli": 4,
+    "date_joined": "2021-10-19",
+    "subtotal": "9510.00",
+    "iva": "1806.90",
+    "total": "11316.90"
+  }
+},
+{
+  "model": "erp.sale",
+  "pk": 18,
+  "fields": {
+    "cli": 6,
+    "date_joined": "2021-11-03",
+    "subtotal": "3000.00",
+    "iva": "570.00",
+    "total": "3570.00"
+  }
+},
+{
+  "model": "erp.detsale",
+  "pk": 5,
+  "fields": {
+    "sale": 3,
+    "prod": 7,
+    "price": "300.00",
+    "cant": 5,
+    "subtotal": "1500.00"
+  }
+},
+{
+  "model": "erp.detsale",
+  "pk": 6,
+  "fields": {
+    "sale": 3,
+    "prod": 6,
+    "price": "450.00",
+    "cant": 2,
+    "subtotal": "900.00"
+  }
+},
+{
+  "model": "erp.detsale",
+  "pk": 7,
+  "fields": {
+    "sale": 4,
+    "prod": 6,
+    "price": "450.00",
+    "cant": 2,
+    "subtotal": "900.00"
+  }
+},
+{
+  "model": "erp.detsale",
+  "pk": 8,
+  "fields": {
+    "sale": 4,
+    "prod": 4,
+    "price": "1390.00",
+    "cant": 2,
+    "subtotal": "2780.00"
+  }
+},
+{
+  "model": "erp.detsale",
+  "pk": 9,
+  "fields": {
+    "sale": 5,
+    "prod": 5,
+    "price": "1500.00",
+    "cant": 2,
+    "subtotal": "3000.00"
+  }
+},
+{
+  "model": "erp.detsale",
+  "pk": 10,
+  "fields": {
+    "sale": 5,
+    "prod": 4,
+    "price": "1390.00",
+    "cant": 4,
+    "subtotal": "5560.00"
+  }
+},
+{
+  "model": "erp.detsale",
+  "pk": 14,
+  "fields": {
+    "sale": 7,
+    "prod": 5,
+    "price": "1500.00",
+    "cant": 2,
+    "subtotal": "3000.00"
+  }
+},
+{
+  "model": "erp.detsale",
+  "pk": 15,
+  "fields": {
+    "sale": 7,
+    "prod": 9,
+    "price": "700.00",
+    "cant": 2,
+    "subtotal": "1400.00"
+  }
+},
+{
+  "model": "erp.detsale",
+  "pk": 16,
+  "fields": {
+    "sale": 7,
+    "prod": 6,
+    "price": "450.00",
+    "cant": 3,
+    "subtotal": "1350.00"
+  }
+},
+{
+  "model": "erp.detsale",
+  "pk": 27,
+  "fields": {
+    "sale": 8,
+    "prod": 6,
+    "price": "450.00",
+    "cant": 2,
+    "subtotal": "900.00"
+  }
+},
+{
+  "model": "erp.detsale",
+  "pk": 28,
+  "fields": {
+    "sale": 8,
+    "prod": 9,
+    "price": "700.00",
+    "cant": 3,
+    "subtotal": "2100.00"
+  }
+},
+{
+  "model": "erp.detsale",
+  "pk": 29,
+  "fields": {
+    "sale": 8,
+    "prod": 4,
+    "price": "1390.00",
+    "cant": 2,
+    "subtotal": "2780.00"
+  }
+},
+{
+  "model": "erp.detsale",
+  "pk": 30,
+  "fields": {
+    "sale": 9,
+    "prod": 8,
+    "price": "600.00",
+    "cant": 4,
+    "subtotal": "2400.00"
+  }
+},
+{
+  "model": "erp.detsale",
+  "pk": 31,
+  "fields": {
+    "sale": 6,
+    "prod": 8,
+    "price": "600.00",
+    "cant": 1,
+    "subtotal": "600.00"
+  }
+},
+{
+  "model": "erp.detsale",
+  "pk": 32,
+  "fields": {
+    "sale": 6,
+    "prod": 9,
+    "price": "700.00",
+    "cant": 1,
+    "subtotal": "700.00"
+  }
+},
+{
+  "model": "erp.detsale",
+  "pk": 33,
+  "fields": {
+    "sale": 6,
+    "prod": 6,
+    "price": "450.00",
+    "cant": 2,
+    "subtotal": "900.00"
+  }
+},
+{
+  "model": "erp.detsale",
+  "pk": 37,
+  "fields": {
+    "sale": 10,
+    "prod": 11,
+    "price": "1560.00",
+    "cant": 1,
+    "subtotal": "1560.00"
+  }
+},
+{
+  "model": "erp.detsale",
+  "pk": 38,
+  "fields": {
+    "sale": 10,
+    "prod": 5,
+    "price": "1500.00",
+    "cant": 1,
+    "subtotal": "1500.00"
+  }
+},
+{
+  "model": "erp.detsale",
+  "pk": 39,
+  "fields": {
+    "sale": 11,
+    "prod": 4,
+    "price": "1390.00",
+    "cant": 1,
+    "subtotal": "1390.00"
+  }
+},
+{
+  "model": "erp.detsale",
+  "pk": 40,
+  "fields": {
+    "sale": 12,
+    "prod": 11,
+    "price": "1560.00",
+    "cant": 1,
+    "subtotal": "1560.00"
+  }
+},
+{
+  "model": "erp.detsale",
+  "pk": 41,
+  "fields": {
+    "sale": 13,
+    "prod": 5,
+    "price": "1500.00",
+    "cant": 4,
+    "subtotal": "6000.00"
+  }
+},
+{
+  "model": "erp.detsale",
+  "pk": 42,
+  "fields": {
+    "sale": 13,
+    "prod": 4,
+    "price": "1390.00",
+    "cant": 6,
+    "subtotal": "8340.00"
+  }
+},
+{
+  "model": "erp.detsale",
+  "pk": 43,
+  "fields": {
+    "sale": 14,
+    "prod": 6,
+    "price": "450.00",
+    "cant": 15,
+    "subtotal": "6750.00"
+  }
+},
+{
+  "model": "erp.detsale",
+  "pk": 44,
+  "fields": {
+    "sale": 14,
+    "prod": 9,
+    "price": "700.00",
+    "cant": 10,
+    "subtotal": "7000.00"
+  }
+},
+{
+  "model": "erp.detsale",
+  "pk": 45,
+  "fields": {
+    "sale": 15,
+    "prod": 5,
+    "price": "1500.00",
+    "cant": 6,
+    "subtotal": "9000.00"
+  }
+},
+{
+  "model": "erp.detsale",
+  "pk": 46,
+  "fields": {
+    "sale": 16,
+    "prod": 4,
+    "price": "1390.00",
+    "cant": 5,
+    "subtotal": "6950.00"
+  }
+},
+{
+  "model": "erp.detsale",
+  "pk": 47,
+  "fields": {
+    "sale": 16,
+    "prod": 11,
+    "price": "1560.00",
+    "cant": 5,
+    "subtotal": "7800.00"
+  }
+},
+{
+  "model": "erp.detsale",
+  "pk": 48,
+  "fields": {
+    "sale": 17,
+    "prod": 10,
+    "price": "890.00",
+    "cant": 6,
+    "subtotal": "5340.00"
+  }
+},
+{
+  "model": "erp.detsale",
+  "pk": 49,
+  "fields": {
+    "sale": 17,
+    "prod": 4,
+    "price": "1390.00",
+    "cant": 3,
+    "subtotal": "4170.00"
+  }
+},
+{
+  "model": "erp.detsale",
+  "pk": 50,
+  "fields": {
+    "sale": 18,
+    "prod": 5,
+    "price": "1500.00",
+    "cant": 2,
+    "subtotal": "3000.00"
+  }
+},
+{
+  "model": "user.user",
+  "pk": 1,
+  "fields": {
+    "password": "pbkdf2_sha256$260000$ZGURbu9VRdA12oOVT6r69a$OEFH9rY9jhN8QOn9XR0QQTgYA0+otkTrGL0MYzQyxgw=",
+    "last_login": "2021-10-25T15:05:11.595Z",
+    "is_superuser": false,
+    "username": "deser",
+    "first_name": "JosÚ Pablo",
+    "last_name": "",
+    "email": "jparancibialinker@gmail.com",
+    "is_staff": true,
+    "is_active": true,
+    "date_joined": "2021-09-27T06:52:56Z",
+    "image": "users/2021/09/27/head-659651_1920.png",
+    "token": null,
+    "groups": [
+      1
+    ],
+    "user_permissions": [
+      22,
+      23
+    ]
+  }
+},
+{
+  "model": "user.user",
+  "pk": 2,
+  "fields": {
+    "password": "pbkdf2_sha256$260000$IO1Nd8lo6W5RJtyRaGViE5$XuSlDt1tmhG2h5bUS26QmINQcenYfT5wLS0YYHEc/ak=",
+    "last_login": "2021-10-29T18:45:35.172Z",
+    "is_superuser": true,
+    "username": "daser",
+    "first_name": "JosÚ Pablo",
+    "last_name": "Arancibia Linker",
+    "email": "deserrapqta@gmail.com",
+    "is_staff": true,
+    "is_active": true,
+    "date_joined": "2021-09-27T13:50:28Z",
+    "image": "users/2021/10/29/669c68af00d49891e2f3c78c539862da.jpg",
+    "token": "2634beda-1050-43a9-9069-d6182b069c6a",
+    "groups": [
+      1
+    ],
+    "user_permissions": []
+  }
+},
+{
+  "model": "user.user",
+  "pk": 3,
+  "fields": {
+    "password": "pbkdf2_sha256$260000$zgl9k6inL0M2RlxwylSp3K$hrOMrPzco9pyahuHx+am0gbLqMJLjBNY2Fh114B1PKI=",
+    "last_login": "2021-10-04T18:15:03.105Z",
+    "is_superuser": true,
+    "username": "jose",
+    "first_name": "",
+    "last_name": "",
+    "email": "",
+    "is_staff": true,
+    "is_active": true,
+    "date_joined": "2021-09-30T19:46:33.790Z",
+    "image": "",
+    "token": null,
+    "groups": [
+      3,
+      2
+    ],
+    "user_permissions": []
+  }
+},
+{
+  "model": "user.user",
+  "pk": 5,
+  "fields": {
+    "password": "pbkdf2_sha256$260000$Urzfr6xjTW3Bbn0J1sMJTK$F48B65Be4TEthbzv6X3kdEje2Sv/hu9TEEisQU4h6gg=",
+    "last_login": "2021-10-15T23:29:52.373Z",
+    "is_superuser": false,
+    "username": "dasier",
+    "first_name": "",
+    "last_name": "",
+    "email": "ASD@asd.cl",
+    "is_staff": false,
+    "is_active": true,
+    "date_joined": "2021-10-15T23:28:43.707Z",
+    "image": "",
+    "token": null,
+    "groups": [
+      3,
+      2
+    ],
+    "user_permissions": []
+  }
+},
+{
+  "model": "user.user",
+  "pk": 6,
+  "fields": {
+    "password": "pbkdf2_sha256$260000$FTdvBlhJZMFEdB8rd4jAuJ$DeqEc3bpecK8P/j8D3PqiUPUE5F0KjqRHvukR9GgX8o=",
+    "last_login": null,
+    "is_superuser": true,
+    "username": "hola",
+    "first_name": "",
+    "last_name": "",
+    "email": "hola@hola.cl",
+    "is_staff": true,
+    "is_active": true,
+    "date_joined": "2021-10-17T00:36:52.578Z",
+    "image": "",
+    "token": null,
+    "groups": [
+      3,
+      2
+    ],
+    "user_permissions": []
+  }
+},
+{
+  "model": "user.user",
+  "pk": 7,
+  "fields": {
+    "password": "pbkdf2_sha256$260000$71djPBOPGcXwFwNZaMZUzv$cWbSsWpVEPI2QBMXHbpxlKwg1bZ5jR8LRMKXtoW+2V4=",
+    "last_login": null,
+    "is_superuser": true,
+    "username": "Holi",
+    "first_name": "",
+    "last_name": "",
+    "email": "holi@holi.cl",
+    "is_staff": true,
+    "is_active": true,
+    "date_joined": "2021-10-17T00:42:45.200Z",
+    "image": "",
+    "token": null,
+    "groups": [
+      3,
+      2
+    ],
+    "user_permissions": []
+  }
+},
+{
+  "model": "user.user",
+  "pk": 8,
+  "fields": {
+    "password": "pbkdf2_sha256$260000$P8P4FHBJUM9cbPkzxbt7KR$qrZ9uk9NuNeIVkdUKihMe8d7R3605qJaEdW/BC4AdiU=",
+    "last_login": null,
+    "is_superuser": true,
+    "username": "jotape",
+    "first_name": "",
+    "last_name": "",
+    "email": "jotape@hotmail.com",
+    "is_staff": true,
+    "is_active": true,
+    "date_joined": "2021-10-17T00:45:49.541Z",
+    "image": "",
+    "token": null,
+    "groups": [
+      2
+    ],
+    "user_permissions": []
+  }
+},
+{
+  "model": "user.user",
+  "pk": 9,
+  "fields": {
+    "password": "pbkdf2_sha256$260000$0e9LVqvjldjOcE6TKk86VJ$iOA5jIdgnoeu3sPtdX8caDJ7NYI6j6ezqtCfdS1ux0g=",
+    "last_login": "2021-10-18T14:10:02.179Z",
+    "is_superuser": true,
+    "username": "JotaPe",
+    "first_name": "JosÚ",
+    "last_name": "Arancibia",
+    "email": "jparancibialinker@gmail.com",
+    "is_staff": true,
+    "is_active": true,
+    "date_joined": "2021-10-17T00:54:38.541Z",
+    "image": "",
+    "token": null,
+    "groups": [
+      1,
+      2
+    ],
+    "user_permissions": []
+  }
+},
+{
+  "model": "user.user",
+  "pk": 12,
+  "fields": {
+    "password": "pbkdf2_sha256$260000$r499XM7jhdrSuxyRnH3h1Q$UpQcBe7EcFKLJNJQp5PLghZUh89/U7nqmQru1kMSPco=",
+    "last_login": "2021-10-25T15:07:50.504Z",
+    "is_superuser": false,
+    "username": "Lala",
+    "first_name": "Lala",
+    "last_name": "Lala",
+    "email": "Laal@lala.cl",
+    "is_staff": false,
+    "is_active": true,
+    "date_joined": "2021-10-25T15:07:34.954Z",
+    "image": "",
+    "token": null,
+    "groups": [
+      1
+    ],
+    "user_permissions": []
+  }
+},
+{
+  "model": "user.user",
+  "pk": 13,
+  "fields": {
+    "password": "pbkdf2_sha256$260000$53Z0IZRZs42DCerVtMxxnn$J8O2sbieHpeAdITpZD1Vw/zfPdW0/HjbSo7ibO0MA4I=",
+    "last_login": "2021-10-25T16:41:54.794Z",
+    "is_superuser": false,
+    "username": "kaka",
+    "first_name": "kaka",
+    "last_name": "kaka",
+    "email": "kaka@kaka.ck",
+    "is_staff": false,
+    "is_active": true,
+    "date_joined": "2021-10-25T15:13:25.882Z",
+    "image": "users/2021/10/25/avatar_Y0Yw50w.png",
+    "token": null,
+    "groups": [
+      1
+    ],
+    "user_permissions": []
+  }
+},
+{
+  "model": "user.user",
+  "pk": 14,
+  "fields": {
+    "password": "pbkdf2_sha256$260000$hyEIjjlVmSXEvdHpZ7DXv9$DZmnOyhmuxOMxMH4ZA2r6/cK+fxuZzwvbppi/KYcpF4=",
+    "last_login": null,
+    "is_superuser": false,
+    "username": "caca",
+    "first_name": "caca",
+    "last_name": "caca",
+    "email": "caca@caca.cl",
+    "is_staff": false,
+    "is_active": true,
+    "date_joined": "2021-10-25T15:14:07.902Z",
+    "image": "",
+    "token": null,
+    "groups": [
+      1
+    ],
+    "user_permissions": []
+  }
+}
+]

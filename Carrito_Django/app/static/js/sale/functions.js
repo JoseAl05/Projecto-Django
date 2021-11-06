@@ -8,6 +8,13 @@ var vents = {
         total:0.00,
         products:[]
     },
+    get_ids: function(){
+        var ids = [];
+        $.each(this.items.products,function(key,value){
+            ids.push(value.id)
+        });
+        return ids;
+    },
 
     ////////////Funcion para caluclar subtotal,iva y total de la venta///////////////
 
@@ -39,8 +46,8 @@ var vents = {
             data: this.items.products,
             columns:[
                 {'data':'id'},
-                {'data':'name'},
-                {'data':'cat'},
+                {'data':'full_name'},
+                {'data':'stock'},
                 {'data':'pvp'},
                 {'data':'cant'},
                 {'data':'subtotal'},
@@ -54,6 +61,14 @@ var vents = {
                         
                         var buttons = '<a rel="remove" class="btn btn-danger"><i class="fas fa-trash"></i></a> '//'<button type="button" onclick="openDeleteModal(\'/erp/category/delete/' + row.id + '/\')" class="btn btn-danger"><i class="fas fa-trash"></i></button> ';
                         return buttons;
+                    }
+                },
+                {
+                    targets: [2],
+                    class:'text-center',
+                    orderable:false,
+                    render:function(data,type,row){
+                        return '<span class="badge badge-success">'+ data +'</span>';
                     }
                 },
                 {
@@ -76,7 +91,7 @@ var vents = {
             rowCallback( row, data, displayNum, displayIndex, dataIndex ){
                 $(row).find('input[name="cant"]').TouchSpin({
                     min: 0,
-                    max: 1000,
+                    max: data.stock,
                     step: 1,
                 });
             },
@@ -84,6 +99,8 @@ var vents = {
     
             }
         });
+        console.log(this.items);
+        console.log(this.get_ids());
     },
 
     ///////////////Function para añadir los productos al array de productos dentro del objeto items y renderizar la datatable con la nueva info/////////////////////
@@ -108,8 +125,8 @@ function formatRepo(repo) {
         '<div class="col-lg-11 text-left shadow-sm">' +
         //'<br>' +
         '<p style="margin-bottom: 0;">' +
-        '<b>Nombre:</b> ' + repo.name + '<br>' +
-        '<b>Categoría:</b> ' + repo.cat + '<br>' +
+        '<b>Nombre:</b> ' + repo.full_name + '<br>' +
+        '<b>Stock:</b> ' + repo.stock + '<br>' +
         '<b>PVP:</b> <span class="badge badge-warning">$'+repo.pvp+'</span>'+
         '</p>' +
         '</div>' +
@@ -125,8 +142,28 @@ function formatRepo(repo) {
 $(function(){
 
     $('select[name="cli"]').select2({
-        theme: "bootstrap4",
-        language: 'es'
+        theme:'bootstrap4',
+        language:'es',
+        allowClear:true,
+        ajax:{
+            delay:250,
+            type:'POST',
+            url:window.location.pathname,
+            data:function(params){
+                var queryParams = {
+                    term:params.term,
+                    action:'search_client'
+                }
+                return queryParams
+            },
+            processResults: function(data){
+                return {
+                    results: data
+                };
+            },
+        },
+        placeholder: 'Search a Client',
+        minimumInputLength:1,
     });
 
 
@@ -136,34 +173,6 @@ $(function(){
         vents.calculate_invoice();
     }).val(0.19);
 
-    /*$('input[name="search"]').autocomplete({
-        source: function(request,response){
-            $.ajax({
-                url: window.location.pathname,
-                type:'POST',
-                data: {
-                    'action' : 'search_product',
-                    'term': request.term
-                },
-                dataType:'json',
-            }).done(function(data){
-                response(data);
-            }).fail(function(jqXHR,textStatus,errorThrown){
-                //alert(textStatus+':'+errorThrown);
-            });
-        },
-        delay:500,
-        minLength:1,
-        select: function( event, ui ) {
-            event.preventDefault();
-            ui.item.cant = 1;
-            ui.item.subtotal = 0.00;
-
-            vents.add(ui.item);
-
-            $(this).val('');
-        }
-    });*/
 
     $('#prod_table tbody')
         .on('click','a[rel="remove"]',function(){
@@ -261,7 +270,8 @@ $(function(){
             data: function(params){
                 var queryParameters = {
                     term:params.term,
-                    action:'search_product'
+                    action:'search_product',
+                    ids: JSON.stringify(vents.get_ids())
                 }
 
                 return queryParameters;

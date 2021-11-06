@@ -11,7 +11,7 @@ from django.urls.base import reverse_lazy
 
 class isSuperUserMixin(object):
 
-
+    #Metodo dispatch que toma la solicitud y devuelve una respuesta
     def dispatch(self, request, *args, **kwargs):
         if request.user.is_superuser:
             return super().dispatch(request, *args, **kwargs)

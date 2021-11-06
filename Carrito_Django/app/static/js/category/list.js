@@ -25,8 +25,8 @@ function getCategoryData(){
                 orderable:false,
                 render:function(data,type,row){
                     
-                    var buttons = '<button type="button" onclick="openDeleteModal(\'/erp/category/delete/' + row.id + '/\')" class="btn btn-danger"><i class="fas fa-trash"></i></button> ';
-                    buttons += '<button type="button" class="btn btn-warning" onclick="openEditModal(\'/erp/category/update/' + row.id + '/\')"><i class="fas fa-edit"></i></button>';
+                    var buttons = '<button type="button" onclick="openDeleteModal(\'/erp/category/delete/' + row.id + '/\')" class="btn btn-danger btn-xs"><i class="fas fa-trash"></i></button> ';
+                    buttons += '<button type="button" class="btn btn-warning btn-xs" onclick="openEditModal(\'/erp/category/update/' + row.id + '/\')"><i class="fas fa-edit"></i></button>';
                     return buttons;
                 }
             },

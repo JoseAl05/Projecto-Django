@@ -1,9 +1,11 @@
 from django.contrib.auth.mixins import LoginRequiredMixin
+from django.db.models.query_utils import Q
 from django.http.response import HttpResponseRedirect, JsonResponse
 from django.http import HttpResponse
 from django.shortcuts import render,redirect
+from core.erp.models import Client
 from core.erp.mixins import ValidatePermissionRequiredMixin
-from app.settings import MEDIA_URL,STATIC_URL,BASE_DIR
+from app.settings import BASE_DIR
 from core.erp.models import DetSale
 from core.erp.models import Product
 from core.erp.models import Sale
@@ -87,14 +89,21 @@ class SaleCreateView(LoginRequiredMixin,ValidatePermissionRequiredMixin,CreateVi
             action = request.POST['action']
             if action == 'search_product':
                 data = []
-                products = Product.objects.filter(name__icontains = request.POST['term'])[0:10]
-                for i in products:
+                term = request.POST['term'].strip()
+                ids_exclude = json.loads(request.POST['ids'])
+                print(ids_exclude)
+                print(type(ids_exclude))
+                if len(term):
+                    products = Product.objects.filter(name__icontains = term,stock__gt = 0)
+
+                for i in products.exclude(id__in=ids_exclude)[0:10]:
                     item = i.toJSON()
-                    #item['value'] = i.name
                     item['text'] = i.name
                     data.append(item)
 
+
             elif action == 'add':
+
                 with transaction.atomic():
                     vents = json.loads(request.POST['vents'])
                     sale = Sale()
@@ -113,7 +122,19 @@ class SaleCreateView(LoginRequiredMixin,ValidatePermissionRequiredMixin,CreateVi
                         det.price = float(i['pvp'])
                         det.subtotal = float(i['subtotal'])
                         det.save()
+
+                        det.prod.stock -= det.cant
+                        det.prod.save()
                     data = {'id':sale.id}
+
+            elif action == 'search_client':
+                data = []
+                term = request.POST['term']
+                clients = Client.objects.filter(Q(names__icontains = term) | Q(surnames__icontains = term) | Q(dni__icontains = term))[0:10]
+                for i in clients:
+                    item = i.toJSON()
+                    item['text'] = i.get_full_name()
+                    data.append(item)
             else:
                 data['error'] = 'No ha ingresado a ninguna opción'
         except Exception as e:
@@ -128,6 +149,7 @@ class SaleCreateView(LoginRequiredMixin,ValidatePermissionRequiredMixin,CreateVi
         context['action'] = 'add'
         context['url_create'] = '/erp/sale/create/'
         context['detail'] = []
+        context['create_client'] = reverse_lazy('create_client')
         return context
 
 class SaleUpdateView(LoginRequiredMixin,ValidatePermissionRequiredMixin,UpdateView):
@@ -143,6 +165,12 @@ class SaleUpdateView(LoginRequiredMixin,ValidatePermissionRequiredMixin,UpdateVi
     def dispatch(self, request, *args, **kwargs):
         return super().dispatch(request, *args, **kwargs)
 
+    def get_form(self,form_class=None):
+        instance = self.get_object()
+        form = SaleForm(instance=instance)
+        form.fields['cli'].queryset = Client.objects.filter(id=instance.cli.id)
+        return form
+
 
     def post(self, request, *args, **kwargs):
         data = {}
@@ -156,7 +184,6 @@ class SaleUpdateView(LoginRequiredMixin,ValidatePermissionRequiredMixin,UpdateVi
                     item['value'] = i.name
                     data.append(item)
                     print(data)
-
             elif action == 'edit':
                 with transaction.atomic():
                     vents = json.loads(request.POST['vents'])
@@ -178,6 +205,8 @@ class SaleUpdateView(LoginRequiredMixin,ValidatePermissionRequiredMixin,UpdateVi
                         det.price = float(i['pvp'])
                         det.subtotal = float(i['subtotal'])
                         det.save()
+                        det.prod.stock -= det.cant
+                        det.prod.save()
             else:
                 data['error'] = 'You have not entered any option'
         except Exception as e:

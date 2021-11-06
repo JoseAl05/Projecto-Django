@@ -14,7 +14,7 @@ class Category(BaseModel):
     desc = models.CharField(max_length=500, verbose_name='Descripcion',null=True,blank=True)
 
     def __str__(self):
-        return 'Nombre: {}'.format(self.name)
+        return self.name
 
     def save(self, force_insert=False, force_update=False, using=None, update_fields=None):
         user = get_current_user()
@@ -30,7 +30,6 @@ class Category(BaseModel):
     #Transforma en diccionario los parametros del modelo.
     def toJSON(self):
         item = model_to_dict(self)
-        print(item)
         return item
 
     class Meta:
@@ -43,6 +42,7 @@ class Product(models.Model):
     name = models.CharField(max_length=150, verbose_name='Nombre', unique=True)
     cat = models.ForeignKey(Category, on_delete=models.CASCADE,verbose_name='Categoría')
     image = models.ImageField(upload_to='product/%Y/%m/%d', null=True, blank=True,verbose_name='Imagen')
+    stock = models.IntegerField(default=0,verbose_name='Stock')
     pvp = models.DecimalField(default=0.00, max_digits=9, decimal_places=2,verbose_name='Precio de Venta')
 
     def __str__(self):
@@ -55,6 +55,7 @@ class Product(models.Model):
         
     def toJSON(self):
         item = model_to_dict(self)
+        item['full_name'] = '{} / {}'.format(self.name,self.cat)
         item['image'] = self.get_image()
         item['pvp'] = format(self.pvp,'.2f')
         # item = model_to_dict(self,exclude=['image'])
@@ -77,12 +78,16 @@ class Client(models.Model):
     gender = models.CharField(max_length=10, choices=gender_choices, default='male', verbose_name='Sexo')
 
     def __str__(self):
-        return self.names
+        return self.get_full_name()
+
+    def get_full_name(self):
+        return '{} {} / {}'.format(self.names,self.surnames,self.dni)
 
     def toJSON(self):
         item = model_to_dict(self)
         item['gender'] = self.get_gender_display()
         item['birthday'] = self.birthday.strftime('%Y-%m-%d')
+        item['full_name'] = self.get_full_name()
         return item
 
     class Meta:
@@ -111,6 +116,12 @@ class Sale(models.Model):
         item['det'] = [i.toJSON() for i in self.detsale_set.all()]
         print(item)
         return item
+
+    def delete(self, using=None, keep_parents=False):
+        for det in self.detsale_set.all():
+            det.prod.stock += det.cant
+            det.prod.save()
+        super(Sale,self).delete()
 
     class Meta:
         verbose_name = 'Venta'

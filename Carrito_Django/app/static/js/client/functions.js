@@ -43,9 +43,12 @@ function submit_client(url,params){
                         showConfirmButton: false,
                         timer:1000
                     });
-                    getClientData();
-
+                    var newOption = new Option(data.full_name,data.id,defaultSelected = false,selected = true);
+                    $('select[name="cli"]').append(newOption).trigger('change');
+                    //console.log(data);
                     $('#createModal').modal('hide');
+
+                    getClientData();
 
                     return false;
                 }

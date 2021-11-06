@@ -76,6 +76,7 @@ class UserCreateView(LoginRequiredMixin,ValidatePermissionRequiredMixin,CreateVi
             action = request.POST['action']
             if action == 'add':
                 form = self.get_form()
+                print(form)
                 data = form.save()
             else:
                 data['error'] = 'No ha ingresado a ninguna opción'

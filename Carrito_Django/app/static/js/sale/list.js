@@ -82,10 +82,10 @@ function getSaleData(){
                 orderable:false,
                 render:function(data,type,row){
                     
-                    var buttons = '<a type="button" onclick="openDeleteModal(\'/erp/sale/delete/' + row.id + '/\')" class="btn btn-danger"><i class="fas fa-trash"></i></a> ';
-                    buttons += '<a type="button" href="/erp/sale/update/' + row.id + '" class="btn btn-warning"><i class="fas fa-edit"></i></a> ';
-                    buttons += '<a rel="details" type="button" class="btn btn-primary"><i class="fas fa-book"></i></a> ';
-                    buttons += '<a type="button" href="/erp/sale/invoice/pdf/'+ row.id +'/" target= "_blank" class="btn btn-info"><i class="fas fa-file-pdf"></i></a>';
+                    var buttons = '<a type="button" onclick="openDeleteModal(\'/erp/sale/delete/' + row.id + '/\')" class="btn btn-danger btn-xs"><i class="fas fa-trash"></i></a> ';
+                    buttons += '<a type="button" href="/erp/sale/update/' + row.id + '" class="btn btn-warning btn-xs"><i class="fas fa-edit"></i></a> ';
+                    buttons += '<a rel="details" type="button" class="btn btn-primary btn-xs"><i class="fas fa-book"></i></a> ';
+                    buttons += '<a type="button" href="/erp/sale/invoice/pdf/'+ row.id +'/" target= "_blank" class="btn btn-info btn-xs"><i class="fas fa-file-pdf"></i></a>';
                     return buttons;
                 }
             },

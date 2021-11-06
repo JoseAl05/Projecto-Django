@@ -7,29 +7,31 @@ from django.views.generic import ListView,CreateView,UpdateView,DeleteView,FormV
 from django.utils.decorators import method_decorator
 from django.contrib.auth.mixins import LoginRequiredMixin,PermissionRequiredMixin
 from django.contrib.auth.decorators import login_required
-from django.views.decorators.csrf import csrf_exempt 
+from django.views.decorators.csrf import csrf_exempt
 from django.urls import reverse_lazy
 
 
 #Vista basade en Clase ListView
 class CategoryListView(LoginRequiredMixin,ValidatePermissionRequiredMixin,ListView):
-    
+
+    #Variables que controlan los permisos que se requieren para poder interactuar con la vista.
     permission_required = 'view_category'
     url_redirect = reverse_lazy('dashboard')
-    
+
     #Se Define Modelo.
     model = Category
-    
+
     #Se Define nombre del Template que contiene la lista.
     template_name = 'category/list.html'
 
     #Excepcion del token csrfmiddleware
     @method_decorator(csrf_exempt)
-    #@method_decorator(login_required)
+    @method_decorator(login_required)
+    #Metodo dispatch que se ejecuta cuando se llama a una vista y es el que se encarga de redireccionar ya sea para el metodo post o get dependiendo la peticion que se haga
     def dispatch(self, request, *args, **kwargs):
         return super().dispatch(request, *args, **kwargs)
 
-    #Modificación metodo Post
+    #Modificación metodo Post. Funcion que interactua con el formulario del template. Mediante la variable "request" se puede acceder a la informacion enviada en el formulario.
     def post(self, request, *args, **kwargs):
         data = {}
         try:
@@ -43,11 +45,10 @@ class CategoryListView(LoginRequiredMixin,ValidatePermissionRequiredMixin,ListVi
         except Exception as e:
             data['error'] = str(e)
         return JsonResponse(data,safe=False)
-    
-    #Modificación de la funcion get_context_data. Se genera variable "context". Se asignan nombres la lista para poder ser ocupadas en el template.
+    #Modificación de la funcion get_context_data. Se genera variable "context". Se asignan variables al diccionario context que pueden ser usadas en el template.
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context['title'] = 'List of Categories' 
+        context['title'] = 'List of Categories'
         context['create_url'] = reverse_lazy('create_category')
         context['list_url'] = reverse_lazy('category_list')
         context['entity'] = 'Categories'
@@ -56,14 +57,19 @@ class CategoryListView(LoginRequiredMixin,ValidatePermissionRequiredMixin,ListVi
 
 class CategoryCreateView(LoginRequiredMixin,ValidatePermissionRequiredMixin,CreateView):
 
+    #Variables que controlan los permisos que se requieren para poder interactuar con la vista.
     permission_required = 'add_category'
     url_redirect = reverse_lazy('category_list')
 
+    #Se Define Modelo.
     model = Category
+    #Se define la clase Form que se utilizara en el formulario.
     form_class = CategoryForm
+
     template_name = 'category/create.html'
     success_url = reverse_lazy('category_list')
 
+    #Decorador que indica que se requiere estar logeado para poder interactuar con la vista.
     @method_decorator(login_required)
     def dispatch(self, request, *args, **kwargs):
         return super().dispatch(request, *args, **kwargs)
@@ -172,9 +178,9 @@ class CategoryFormView(FormView):
         return super().form_invalid(form)
 
     def get_context_data(self, **kwargs):
-        context = super().get_context_data(**kwargs)    
+        context = super().get_context_data(**kwargs)
         context['title'] = 'Form Category'
-        context['entity'] = 'Categories' 
+        context['entity'] = 'Categories'
         context['list_url'] = reverse_lazy('category_list')
-        context['action'] = 'add' 
+        context['action'] = 'add'
         return context

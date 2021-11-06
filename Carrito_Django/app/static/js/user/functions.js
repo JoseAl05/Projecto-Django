@@ -106,7 +106,9 @@ function edit_user(url,params){
                 url: url,
                 type:'POST',
                 data: params,
-                dataType:'json'
+                dataType:'json',
+                processData: false,
+                contentType: false,
             }).done(function(data){
                 //Si no hubo error en la peticion, se le da el mensaje al usuario de que la accion fue correcta y se redirige a la lista de catgorias
                 if(!data.hasOwnProperty('error')){

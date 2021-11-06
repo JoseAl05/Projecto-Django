@@ -8,7 +8,7 @@ from core.erp.forms import ClientForm
 from django.views.generic import ListView,CreateView,UpdateView,DeleteView,FormView
 from django.utils.decorators import method_decorator
 from django.contrib.auth.decorators import login_required
-from django.views.decorators.csrf import csrf_exempt 
+from django.views.decorators.csrf import csrf_exempt
 from django.urls import reverse_lazy
 
 class ClientListView(LoginRequiredMixin,ValidatePermissionRequiredMixin,ListView):
@@ -25,6 +25,7 @@ class ClientListView(LoginRequiredMixin,ValidatePermissionRequiredMixin,ListView
 
     #Excepcion del token csrfmiddleware
     @method_decorator(csrf_exempt)
+    #Decorador que indica que se requiere estar logeado para interactuar con la vista
     @method_decorator(login_required)
     def dispatch(self, request, *args, **kwargs):
         return super().dispatch(request, *args, **kwargs)
@@ -44,11 +45,11 @@ class ClientListView(LoginRequiredMixin,ValidatePermissionRequiredMixin,ListView
         except Exception as e:
             data['error'] = str(e)
         return JsonResponse(data,safe=False)
-    
-    #Modificación de la funcion get_context_data. Se genera variable "context". Se asignan nombres la lista para poder ser ocupadas en el template.
+
+    #Modificación de la funcion get_context_data. Se genera variable "context". Se asignan variables al diccionario context que pueden ser usadas en el template.
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context['title'] = 'List of Clients' 
+        context['title'] = 'List of Clients'
         context['create_url'] = reverse_lazy('create_client')
         context['list_url'] = reverse_lazy('client_list')
         context['entity'] = 'Clients'
@@ -71,21 +72,25 @@ class ClientCreateView(LoginRequiredMixin,ValidatePermissionRequiredMixin,Create
     def post(self, request, *args, **kwargs):
         data = {}
         try:
+            #Se obtiene el action del formulario
             action = request.POST['action']
+            #Se valida el action del formulario
             if action == 'add':
+                #Se obtiene la instancia del formulario ingresado.
                 form = self.get_form()
+                #Se guarda la informacion del formulario
                 data = form.save()
             else:
                 data['error'] = 'No ha ingresado a ninguna opción'
         except Exception as e:
             data['error'] = str(e)
-
-        return JsonResponse(data)   
+        #Se retorna la data en formato JSON.
+        return JsonResponse(data)
 
     def get_context_data(self, **kwargs):
-        context = super().get_context_data(**kwargs)    
+        context = super().get_context_data(**kwargs)
         context['title'] = 'Create Client'
-        context['entity'] = 'Clients' 
+        context['entity'] = 'Clients'
         context['list_url'] = reverse_lazy('client_list')
         context['action'] = 'add'
         context['url_create'] = '/erp/client/create/'
@@ -120,7 +125,7 @@ class ClientUpdateView(LoginRequiredMixin,ValidatePermissionRequiredMixin,Update
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context['title'] = 'Update Client' 
+        context['title'] = 'Update Client'
         context['create_url'] = reverse_lazy('create_client')
         context['list_url'] = reverse_lazy('client_list')
         context['entity'] = 'Clients'

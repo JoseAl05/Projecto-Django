@@ -19,7 +19,7 @@
                 {% for field in form.visible_fields  %}
                     <div class="form-group">
                         <label>{{field.label}}:</label>
-                        {{field|add_class:'form-control'|attr:'autocomplete:off'}}
+                        {{field|add_class:'form-control'}}
                     </div>
                 {% endfor %}
             </div>
@@ -33,7 +33,7 @@
         <script>
             $('form').on('submit',function(e){
                 e.preventDefault()
-                var params = $(this).serializeArray();
+                var params = new FormData(this);
                 edit_user('{% url 'update_user' object.id %}',params)
             });
         </script>

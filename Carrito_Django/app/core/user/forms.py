@@ -70,6 +70,7 @@ class UserForm(ModelForm):
                 form_user.groups.clear()
                 for g in self.cleaned_data['groups']:
                     form_user.groups.add(g)
+                print(self.cleaned_data)
             else:
                 data['error'] = form.errors
         except Exception as e:
